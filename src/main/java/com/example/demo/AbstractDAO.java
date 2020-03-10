@@ -100,6 +100,12 @@ public class AbstractDAO<T> {
         return sb.toString();
     }
 
+    /**
+     *
+     * @param = numele variabilelor instanta cu care este apelata metoda
+     * @return query ce va insera o linie intr-un tabel
+     */
+
 
     public List<T> findAll() {
         Connection connection = null;
@@ -123,6 +129,87 @@ public class AbstractDAO<T> {
         return null;
     }
 
+    public String insertQuery(String[] fields) {
+        // String query = "INSERT INTO records (id, time) VALUES (?, ?)";
+        StringBuilder sb = new StringBuilder();
+        sb.append("INSERT ");
+        sb.append("INTO ");
+        sb.append("fitnesscarddb." + type.getSimpleName());
+        sb.append(" (");
+        for (int i = 0; i < fields.length; i++) {
+            sb.append(fields[i]);
+            if (i != fields.length - 1)
+                sb.append(", ");
+        }
+        sb.append(") ");
+        sb.append(" VALUES ");
+        sb.append(" (");
+        for (int i = 0; i < fields.length; i++) {
+            sb.append("?");
+            if (i != fields.length - 1)
+                sb.append(", ");
+        }
+        sb.append(")");
+
+        return sb.toString();
+    }
+
+    /**
+     * metoda insereaza un element intr-o tabela
+     *
+     * @param t un obiect generic
+     * @return obiectul generic t
+     */
+    public T insert(T t) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        Field[] fields = type.getDeclaredFields();
+        String[] fieldsName = new String[fields.length];
+        Object[] valuesForFields = new Object[fields.length];
+        for (int i = 0; i < fields.length; i++)
+            fieldsName[i] = fields[i].getName();
+
+        int j = 0;
+        for (Field field : fields) {
+            field.setAccessible(true);
+
+            Object value = null;
+
+            try {
+                value = field.get(t);
+                valuesForFields[j++] = value;
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+
+        }
+        String query = insertQuery(fieldsName);
+
+        try {
+            connection = ConnectionFactory.getConnection();
+            statement = connection.prepareStatement(query);
+
+            for (int i = 0; i < valuesForFields.length; i++)
+                if (valuesForFields[i].getClass().getSimpleName().equals("Integer"))
+                    statement.setInt(i + 1, ((Integer) valuesForFields[i]).intValue());
+                else if (valuesForFields[i].getClass().getSimpleName().equals("String"))
+                    statement.setString(i + 1, ((String) valuesForFields[i]));
+                else if (valuesForFields[i].getClass().getSimpleName().equals("Float"))
+                    statement.setFloat(i + 1, ((Float) valuesForFields[i]).floatValue());
+
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            LOGGER.log(Level.WARNING, type.getName() + "DAO:insertToDB " + e.getMessage());
+        } finally {
+            ConnectionFactory.close(resultSet);
+            ConnectionFactory.close(statement);
+            ConnectionFactory.close(connection);
+        }
+
+        return t;
+    }
 
 }
 

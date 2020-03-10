@@ -13,4 +13,8 @@ public class UserBLL {
         List<User> usersList = userDAO.findAll();
         return usersList;
     }
+
+    public void insertClient(User user) {
+        userDAO.insert(user);
+    }
 }

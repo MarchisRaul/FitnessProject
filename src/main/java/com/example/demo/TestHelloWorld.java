@@ -1,10 +1,7 @@
 package com.example.demo;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,4 +24,13 @@ public class TestHelloWorld {
     public void testMePlease() {
         System.out.println("AM INTRAT");
     }
+
+    @PostMapping("/{insertUser}")
+    public String postRequest(@PathVariable String insertUser,@RequestBody User user){
+        System.out.println(user.getName() + " " + user.getAge() + " " + user.getCardtype());
+        System.out.println(insertUser);
+        myUsersBLL.insertClient(new User(user.getName(), user.getAge(), user.getCardtype()));
+        return "Something";
+    }
 }
+
