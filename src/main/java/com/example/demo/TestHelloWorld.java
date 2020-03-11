@@ -29,7 +29,7 @@ public class TestHelloWorld {
     public String postRequest(@PathVariable String insertUser,@RequestBody User user){
         System.out.println(user.getName() + " " + user.getAge() + " " + user.getCardtype());
         System.out.println(insertUser);
-        myUsersBLL.insertClient(new User(user.getName(), user.getAge(), user.getCardtype()));
+        myUsersBLL.insertClient(new User(user.getName(), user.getId_trainer_fkk(), user.getAge(), user.getCardtype()));
         return "Something";
     }
 }

@@ -2,13 +2,15 @@ package com.example.demo;
 
 public class User {
     private String name;
+    private int id_trainer_fkk;
     private int age;
-    private String cardtype;
+    private String card_type;
 
-    public User(String name, int age, String cardtype) {
+    public User(String name, int id_trainer_fkk, int age, String cardtype) {
         this.name = name;
+        this.id_trainer_fkk = id_trainer_fkk;
         this.age = age;
-        this.cardtype = cardtype;
+        this.card_type = cardtype;
     }
 
     public User() {
@@ -23,6 +25,14 @@ public class User {
         this.name = name;
     }
 
+    public int getId_trainer_fkk() {
+        return id_trainer_fkk;
+    }
+
+    public void setId_trainer_fkk(int id_trainer_fkk) {
+        this.id_trainer_fkk = id_trainer_fkk;
+    }
+
     public int getAge() {
         return age;
     }
@@ -32,10 +42,10 @@ public class User {
     }
 
     public String getCardtype() {
-        return cardtype;
+        return card_type;
     }
 
     public void setCardtype(String cardtype) {
-        this.cardtype = cardtype;
+        this.card_type = cardtype;
     }
 }
