@@ -11,25 +11,20 @@ public class TestHelloWorld {
     UserBLL myUsersBLL = new UserBLL();
     List<User> myUsers = new ArrayList<User>();
 
-    @GetMapping("salut")
+    @GetMapping("/getUsers")
     public List<User> getUsers() {
         myUsers = myUsersBLL.findAllClients();
         for (User currentUser: myUsers) {
-            System.out.println(currentUser.getName() + currentUser.getAge() + currentUser.getCardtype());
+            System.out.println(currentUser.getName() + currentUser.getAge() + currentUser.getId_trainer_fkk() + currentUser.getCard_type());
         }
         return myUsers;
     }
 
-    @GetMapping("salve")
-    public void testMePlease() {
-        System.out.println("AM INTRAT");
-    }
-
     @PostMapping("/{insertUser}")
-    public String postRequest(@PathVariable String insertUser,@RequestBody User user){
-        System.out.println(user.getName() + " " + user.getAge() + " " + user.getCardtype());
+    public String postRequest(@PathVariable String insertUser, @RequestBody User user){
+        System.out.println(user.getName() + " " + user.getAge() + " " + user.getCard_type());
         System.out.println(insertUser);
-        myUsersBLL.insertClient(new User(user.getName(), user.getId_trainer_fkk(), user.getAge(), user.getCardtype()));
+        myUsersBLL.insertClient(new User(user.getName(), user.getId_trainer_fkk(), user.getAge(), user.getCard_type()));
         return "Something";
     }
 }

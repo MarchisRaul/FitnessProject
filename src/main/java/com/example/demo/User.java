@@ -41,11 +41,11 @@ public class User {
         this.age = age;
     }
 
-    public String getCardtype() {
+    public String getCard_type() {
         return card_type;
     }
 
-    public void setCardtype(String cardtype) {
-        this.card_type = cardtype;
+    public void setCard_type(String card_type) {
+        this.card_type = card_type;
     }
 }

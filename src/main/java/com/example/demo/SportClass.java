@@ -1,11 +1,11 @@
 package com.example.demo;
 
-public class Class {
+public class SportClass {
     private String name;
     private int id_trainer_fk;
     private int month_price;
 
-    public Class(String name, int id_trainer_fk, int month_price) {
+    public SportClass(String name, int id_trainer_fk, int month_price) {
         this.name = name;
         this.id_trainer_fk = id_trainer_fk;
         this.month_price = month_price;
