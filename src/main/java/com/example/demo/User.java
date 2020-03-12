@@ -1,20 +1,30 @@
 package com.example.demo;
 
 public class User {
+    private int id_user;
     private String name;
     private int id_trainer_fkk;
     private int age;
     private String card_type;
 
-    public User(String name, int id_trainer_fkk, int age, String cardtype) {
+    public User(int id_user, String name, int id_trainer_fkk, int age, String card_type) {
+        this.id_user = id_user;
         this.name = name;
         this.id_trainer_fkk = id_trainer_fkk;
         this.age = age;
-        this.card_type = cardtype;
+        this.card_type = card_type;
     }
 
     public User() {
 
+    }
+
+    public int getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
     }
 
     public String getName() {

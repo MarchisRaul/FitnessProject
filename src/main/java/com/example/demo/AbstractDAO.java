@@ -99,7 +99,7 @@ public class AbstractDAO<T> {
             if (i != fields.length - 1)
                 sb.append(", ");
         }
-        sb.append("WHERE ");
+        sb.append(" WHERE ");
         sb.append(fields[0]);
         sb.append(" = ");
         sb.append("?");
@@ -192,7 +192,7 @@ public class AbstractDAO<T> {
             LOGGER.log(Level.WARNING, type.getName() + "DAO:findById " + e.getMessage());
         } finally {
             ConnectionFactory.close(resultSet);
-            ConnectionFactory.close(statement);
+            //ConnectionFactory.close(statement);
             ConnectionFactory.close(connection);
         }
         return null;
@@ -273,7 +273,7 @@ public class AbstractDAO<T> {
             statement = connection.prepareStatement(query);
 
             for (int i = 0; i < valuesForFields.length; i++)
-                if (valuesForFields[i].getClass().getSimpleName().equals("Integer"))
+                if (valuesForFields[i].getClass().getSimpleName().equals("Integer") || valuesForFields[i].getClass().getSimpleName().equals("int"))
                     statement.setInt(i + 1, ((Integer) valuesForFields[i]).intValue());
                 else if (valuesForFields[i].getClass().getSimpleName().equals("String"))
                     statement.setString(i + 1, ((String) valuesForFields[i]));
@@ -346,7 +346,7 @@ public class AbstractDAO<T> {
             LOGGER.log(Level.WARNING, type.getName() + "DAO:updateTheDB " + e.getMessage());
         } finally {
             ConnectionFactory.close(resultSet);
-            ConnectionFactory.close(statement);
+            //ConnectionFactory.close(statement);
             ConnectionFactory.close(connection);
         }
 
@@ -388,7 +388,13 @@ public class AbstractDAO<T> {
         try {
             connection = ConnectionFactory.getConnection();
             statement = connection.prepareStatement(query);
-            statement.setInt(1, ((Integer) valuesForFields[0]).intValue());
+            if (valuesForFields[0].getClass().getSimpleName().equals("Integer"))
+                statement.setInt(1, ((Integer) valuesForFields[0]).intValue());
+            else if (valuesForFields[0].getClass().getSimpleName().equals("String"))
+                statement.setString(1, ((String) valuesForFields[0]));
+            else if (valuesForFields[0].getClass().getSimpleName().equals("Float"))
+                statement.setFloat(1, ((Float) valuesForFields[0]).floatValue());
+            //statement.setInt(1, ((Integer) valuesForFields[0]).intValue());
             statement.executeUpdate();
 
         } catch (SQLException e) {

@@ -2,10 +2,12 @@ package com.example.demo;
 
 public class Trainer {
     private int id_trainer_pk;
-    private boolean university_diploma;
+    private String name;
+    private int university_diploma;
     private int training_price;
 
-    public Trainer(int id_trainer_pk, boolean university_diploma, int training_price) {
+    public Trainer(int id_trainer_pk, String name, int university_diploma, int training_price) {
+        this.name = name;
         this.id_trainer_pk = id_trainer_pk;
         this.university_diploma = university_diploma;
         this.training_price = training_price;
@@ -13,6 +15,14 @@ public class Trainer {
 
     public Trainer() {
 
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getId_trainer_pk() {
@@ -23,11 +33,11 @@ public class Trainer {
         this.id_trainer_pk = id_trainer_pk;
     }
 
-    public boolean isUniversity_diploma() {
+    public int getUniversity_diploma() {
         return university_diploma;
     }
 
-    public void setUniversity_diploma(boolean university_diploma) {
+    public void setUniversity_diploma(int university_diploma) {
         this.university_diploma = university_diploma;
     }
 
