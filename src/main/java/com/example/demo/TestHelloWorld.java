@@ -4,6 +4,8 @@ package com.example.demo;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +16,14 @@ public class TestHelloWorld {
 
     TrainerBLL myTrainerBLL = new TrainerBLL();
     List<Trainer> myTrainers = new ArrayList<Trainer>();
+
+    ShopBLL myShopBLL = new ShopBLL();
+    List<Shop> myShops = new ArrayList<Shop>();
+
+    SaunaBLL mySaunaBLL = new SaunaBLL();
+    List<Sauna> mySaunas = new ArrayList<Sauna>();
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/M/yyyy hh:mm:ss");
+
 ////////// USER /////////
 //    @GetMapping("/getUsers")
 //    public List<User> getUsers() {
@@ -83,5 +93,67 @@ public class TestHelloWorld {
 //        return "Trainer updated uccesfully";
 //    }
 
+    ////////// Shop /////////
+//    @GetMapping("/getShops")
+//    public List<Shop> getShops() {
+//        myShops = shopBLL.findAllShops();
+//
+//        return myShops;
+//    }
+//
+//    @RequestMapping(value={"/{findShopById}"}, method = RequestMethod.GET)
+//    public Shop findShopByIdRequest(@PathVariable String findShopById, @RequestBody int id){
+//        return myShopBLL.findById(id);
+//    }
+//
+//    @RequestMapping(value={"/{insertShop}"}, method = RequestMethod.POST)
+//    public String insertShopRequest(@PathVariable String insertShop, @RequestBody Shop shop){
+//        myShopBLL.insertShop(new Shop(shop.getId_shop(), shop.isDiscount_mode()));
+//        return "Trainer inserted successfuly!";
+//    }
+//
+//    @RequestMapping(value={"/{deleteShop}"}, method = RequestMethod.POST)
+//    public String deleteShopRequest(@PathVariable String deleteShop, @RequestBody Shop shop) {
+//        myShopBLL.deleteShop(new Shop(shop.getId_shop(), shop.isDiscount_mode()));
+//        return "Trainer deleted succesfully";
+//    }
+//
+//    @RequestMapping(value={"/{updateShop}"}, method = RequestMethod.POST)
+//    public String updateShopRequest(@PathVariable String updateShop, @RequestBody Shop shop) {
+//        myShopBLL.updateShop(new Shop(shop.getId_shop(), shop.isDiscount_mode()), shop.getId_shop());
+//        return "Trainer updated uccesfully";
+//    }
+
+
+    ////////// Sauna /////////
+//    @GetMapping("/getSaunas")
+//    public List<Sauna> getSaunas() {
+//        mySaunas = mySaunaBLL.findAllSaunas();
+//
+//        return mySaunas;
+//    }
+//
+//    @RequestMapping(value={"/{findSaunaById}"}, method = RequestMethod.GET)
+//    public Sauna findSaunaByIdRequest(@PathVariable String findSaunaById, @RequestBody int id){
+//        return mySaunaBLL.findById(id);
+//    }
+//
+//    @RequestMapping(value={"/{insertSauna}"}, method = RequestMethod.POST)
+//    public String insertSaunaRequest(@PathVariable String insertSauna, @RequestBody Sauna sauna) throws ParseException {
+//        mySaunaBLL.insertSauna(new Sauna(sauna.getId_sauna(), sauna.getOccupied(), sauna.getSession_time(), sauna.getSize_number()));
+//        return "Sauna inserted successfuly!";
+//    }
+//
+//    @RequestMapping(value={"/{deleteSauna}"}, method = RequestMethod.POST)
+//    public String deleteSaunaRequest(@PathVariable String deleteSauna, @RequestBody Sauna sauna) {
+//        mySaunaBLL.deleteSauna(new Sauna(sauna.getId_sauna(), sauna.getOccupied(), sauna.getSession_time(), sauna.getSize_number()));
+//        return "Sauna deleted succesfully";
+//    }
+//
+//    @RequestMapping(value={"/{updateSauna}"}, method = RequestMethod.POST)
+//    public String updateSaunaRequest(@PathVariable String updateSauna, @RequestBody Sauna sauna) {
+//        mySaunaBLL.updateSauna(new Sauna(sauna.getId_sauna(), sauna.getOccupied(), sauna.getSession_time(), sauna.getSize_number()), sauna.getId_sauna());
+//        return "Sauna updated uccesfully";
+//    }
 }
 
