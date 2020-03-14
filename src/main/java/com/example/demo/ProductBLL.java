@@ -17,4 +17,34 @@ public class ProductBLL {
     public void insertProduct(Product product) {
         productDAO.insert(product);
     }
+
+    /**
+     * se va sterge clientul primit ca parametru din tabela Client
+     *
+     * @param myProduct reprezinta un client
+     */
+    public void deleteProduct(Product myProduct) {
+        productDAO.delete(myProduct);
+    }
+
+    /**
+     * metoda va face update pe clientul din tabel care are id_client egal cu id-ul
+     * primit ca parametru
+     *
+     * @param myProduct reprezinta un client din tabela Client
+     * @param id       reprezinta un id
+     */
+    public void updateProduct(Product myProduct, int id) {
+        productDAO.update(myProduct, id);
+    }
+
+    /**
+     *
+     * @param id reprezinta un id
+     * @return clientul din tabela Client care are id_client egal cu id-ul primit ca
+     *         parametru
+     */
+    public Product findById(int id) {
+        return productDAO.findById(id);
+    }
 }

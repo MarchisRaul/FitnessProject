@@ -22,8 +22,14 @@ public class TestHelloWorld {
 
     SaunaBLL mySaunaBLL = new SaunaBLL();
     List<Sauna> mySaunas = new ArrayList<Sauna>();
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/M/yyyy hh:mm:ss");
 
+    ProductBLL myProductBLL = new ProductBLL();
+    List<Product> myProducts = new ArrayList<Product>();
+
+    SportClassBLL mySportClassBLL = new SportClassBLL();
+    List<SportClass> mySportClasses = new ArrayList<SportClass>();
+
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/M/yyyy hh:mm:ss");
 ////////// USER /////////
 //    @GetMapping("/getUsers")
 //    public List<User> getUsers() {
@@ -153,7 +159,71 @@ public class TestHelloWorld {
 //    @RequestMapping(value={"/{updateSauna}"}, method = RequestMethod.POST)
 //    public String updateSaunaRequest(@PathVariable String updateSauna, @RequestBody Sauna sauna) {
 //        mySaunaBLL.updateSauna(new Sauna(sauna.getId_sauna(), sauna.getOccupied(), sauna.getSession_time(), sauna.getSize_number()), sauna.getId_sauna());
-//        return "Sauna updated uccesfully";
+//        return "Sauna updated succesfully";
+//    }
+
+
+    ////////// Product /////////
+//    @GetMapping("/getProducts")
+//    public List<Product> getProducts() {
+//        myProducts = myProductBLL.findAllProducts();
+//
+//        return myProducts;
+//    }
+//
+//    @RequestMapping(value={"/{findProductById}"}, method = RequestMethod.GET)
+//    public Product findProductByIdRequest(@PathVariable String findProductById, @RequestBody int id){
+//        return myProductBLL.findById(id);
+//    }
+//
+//    @RequestMapping(value={"/{insertProduct}"}, method = RequestMethod.POST)
+//    public String insertProductRequest(@PathVariable String insertProduct, @RequestBody Product product) throws ParseException {
+//        myProductBLL.insertProduct(new Product(product.getId_product(), product.getName(), product.getId_shop_fk(), product.getUtility(), product.getPrice(), product.getQuantity()));
+//        return "Product inserted successfuly!";
+//    }
+//
+//    @RequestMapping(value={"/{deleteProduct}"}, method = RequestMethod.POST)
+//    public String deleteProductRequest(@PathVariable String deleteProduct, @RequestBody Product product) {
+//        myProductBLL.deleteProduct(new Product(product.getId_product(), product.getName(), product.getId_shop_fk(), product.getUtility(), product.getPrice(), product.getQuantity()));
+//        return "Product deleted succesfully";
+//    }
+//
+//    @RequestMapping(value={"/{updateProduct}"}, method = RequestMethod.POST)
+//    public String updateProductRequest(@PathVariable String updateProduct, @RequestBody Product product) {
+//        myProductBLL.updateProduct(new Product(product.getId_product(), product.getName(), product.getId_shop_fk(), product.getUtility(), product.getPrice(), product.getQuantity()), product.getId_product());
+//        return "Product updated uccesfully";
+//    }
+
+
+    ////////// SportClass /////////
+//    @GetMapping("/getSportClasses")
+//    public List<SportClass> getSportClasses() {
+//        mySportClasses = mySportClassBLL.findAllSportClasses();
+//
+//        return mySportClasses;
+//    }
+//
+//    @RequestMapping(value={"/{findSportClassById}"}, method = RequestMethod.GET)
+//    public SportClass findSportClassByIdRequest(@PathVariable String findSportClassById, @RequestBody int id){
+//        return mySportClassBLL.findById(id);
+//    }
+//
+//    @RequestMapping(value={"/{insertSportClass}"}, method = RequestMethod.POST)
+//    public String insertSportClassRequest(@PathVariable String insertSportClass, @RequestBody SportClass sportClass) throws ParseException {
+//        mySportClassBLL.insertSportClass(new SportClass(sportClass.getId_class(), sportClass.getName(), sportClass.getId_trainer_fk(), sportClass.getMonth_price()));
+//        return "Sport class inserted successfuly!";
+//    }
+//
+//    @RequestMapping(value={"/{deleteSportClass}"}, method = RequestMethod.POST)
+//    public String deleteSportClassRequest(@PathVariable String deleteSportClass, @RequestBody SportClass sportClass) {
+//        mySportClassBLL.deleteSportClass(new SportClass(sportClass.getId_class(), sportClass.getName(), sportClass.getId_trainer_fk(), sportClass.getMonth_price()));
+//        return "Sport class deleted succesfully";
+//    }
+//
+//    @RequestMapping(value={"/{updateSportClass}"}, method = RequestMethod.POST)
+//    public String deleteSportClass(@PathVariable String updateSportClass, @RequestBody SportClass sportClass) {
+//        mySportClassBLL.updateSportClass(new SportClass(sportClass.getId_class(), sportClass.getName(), sportClass.getId_trainer_fk(), sportClass.getMonth_price()), sportClass.getId_class());
+//        return "Product updated uccesfully";
 //    }
 }
 

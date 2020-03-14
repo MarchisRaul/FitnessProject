@@ -1,18 +1,28 @@
 package com.example.demo;
 
 public class Product {
+    private int id_product;
     private String name;
     private int id_shop_fk;
     private String utility;
     private int price;
     private int quantity;
 
-    public Product(String name, int id_shop_fk, String utility, int price, int quantity) {
+    public Product(int id_product, String name, int id_shop_fk, String utility, int price, int quantity) {
+        this.id_product = id_product;
         this.name = name;
         this.id_shop_fk = id_shop_fk;
         this.utility = utility;
         this.price = price;
         this.quantity = quantity;
+    }
+
+    public int getId_product() {
+        return id_product;
+    }
+
+    public void setId_product(int id_product) {
+        this.id_product = id_product;
     }
 
     public String getName() {
