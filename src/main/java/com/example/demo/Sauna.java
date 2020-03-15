@@ -1,10 +1,23 @@
 package com.example.demo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Sauna {
     private int id_sauna;
     private int occupied;
+    //@DateTimeFormat(style = "hh:mm:ss")
+    //@JsonDeserialize(using = TimeDeserializer.class)
+    //@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="hh:mm:ss")
+    //@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="hh:mm:ss")
+
+    //@DateTimeFormat(style = "hh:mm")
+    //@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="hh:mm")
+    @DateTimeFormat(style = "hh:mm")
+    @JsonDeserialize(using = TimeDeserializer.class)
     private Date session_time;
     private int size_number;
 
@@ -13,6 +26,10 @@ public class Sauna {
         this.occupied = occupied;
         this.session_time = session_time;
         this.size_number = size_number;
+    }
+
+    public Sauna() {
+
     }
 
     public int getId_sauna() {

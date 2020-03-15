@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class ProductBLL {
@@ -46,5 +47,18 @@ public class ProductBLL {
      */
     public Product findById(int id) {
         return productDAO.findById(id);
+    }
+
+    public int findBiggestProductId() {
+        int maxId = 0;
+        List<Product> myList = productDAO.findAll();
+        Iterator<Product> myIt = myList.iterator();
+        while (myIt.hasNext()) {
+            Product product = myIt.next();
+            if (product.getId_product() > maxId)
+                maxId = product.getId_product();
+        }
+
+        return maxId;
     }
 }

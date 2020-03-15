@@ -2,11 +2,15 @@ package com.example.demo;
 
 public class Shop {
     private int id_shop;
-    private boolean discount_mode;
+    private int discount_mode;
 
-    public Shop(int id_shop, boolean discount_mode) {
+    public Shop(int id_shop, int discount_mode) {
         this.id_shop = id_shop;
         this.discount_mode = discount_mode;
+    }
+
+    public Shop() {
+
     }
 
     public int getId_shop() {
@@ -17,11 +21,11 @@ public class Shop {
         this.id_shop = id_shop;
     }
 
-    public boolean isDiscount_mode() {
+    public int getDiscount_mode() {
         return discount_mode;
     }
 
-    public void setDiscount_mode(boolean discount_mode) {
+    public void setDiscount_mode(int discount_mode) {
         this.discount_mode = discount_mode;
     }
 }

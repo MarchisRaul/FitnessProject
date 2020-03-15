@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class SportClassBLL {
@@ -46,5 +47,18 @@ public class SportClassBLL {
      */
     public SportClass findById(int id) {
         return sportClassDAO.findById(id);
+    }
+
+    public int findBiggestSportClassId() {
+        int maxId = 0;
+        List<SportClass> myList = sportClassDAO.findAll();
+        Iterator<SportClass> myIt = myList.iterator();
+        while (myIt.hasNext()) {
+            SportClass sportClass = myIt.next();
+            if (sportClass.getId_class() > maxId)
+                maxId = sportClass.getId_class();
+        }
+
+        return maxId;
     }
 }

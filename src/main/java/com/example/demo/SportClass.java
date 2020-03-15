@@ -13,6 +13,10 @@ public class SportClass {
         this.month_price = month_price;
     }
 
+    public SportClass() {
+
+    }
+
     public int getId_class() {
         return id_class;
     }

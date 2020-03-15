@@ -6,11 +6,11 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -187,9 +187,12 @@ public class AbstractDAO<T> {
             statement.setInt(1, id);
             resultSet = statement.executeQuery();
 
+
             return createObjects(resultSet).get(0);
         } catch (SQLException e) {
             LOGGER.log(Level.WARNING, type.getName() + "DAO:findById " + e.getMessage());
+        } catch(Exception exp) {
+            return null;
         } finally {
             ConnectionFactory.close(resultSet);
             //ConnectionFactory.close(statement);
@@ -279,6 +282,9 @@ public class AbstractDAO<T> {
                     statement.setString(i + 1, ((String) valuesForFields[i]));
                 else if (valuesForFields[i].getClass().getSimpleName().equals("Float"))
                     statement.setFloat(i + 1, ((Float) valuesForFields[i]).floatValue());
+                else if (valuesForFields[i].getClass().getSimpleName().equals("Date")) {
+                    statement.setTime(i + 1, new Time(((Date)valuesForFields[i]).getTime()));
+                }
 
             statement.executeUpdate();
 
@@ -339,6 +345,8 @@ public class AbstractDAO<T> {
                     statement.setString(i + 1, ((String) valuesForFields[i]));
                 else if (valuesForFields[i].getClass().getSimpleName().equals("Float"))
                     statement.setFloat(i + 1, ((Float) valuesForFields[i]).floatValue());
+                else if (valuesForFields[i].getClass().getSimpleName().equals("Date"))
+                    statement.setTime(i + 1, new Time(((Date)valuesForFields[i]).getTime()));
             statement.setInt(valuesForFields.length + 1, id);
             statement.executeUpdate();
 

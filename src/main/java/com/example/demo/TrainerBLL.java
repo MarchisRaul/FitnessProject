@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class TrainerBLL {
@@ -47,5 +48,18 @@ public class TrainerBLL {
      */
     public Trainer findById(int id) {
         return trainerDAO.findById(id);
+    }
+
+    public int findBiggestTrainerId() {
+        int maxId = 0;
+        List<Trainer> myList = trainerDAO.findAll();
+        Iterator<Trainer> myIt = myList.iterator();
+        while (myIt.hasNext()) {
+            Trainer trainer = myIt.next();
+            if (trainer.getId_trainer_pk() > maxId)
+                maxId = trainer.getId_trainer_pk();
+        }
+
+        return maxId;
     }
 }
