@@ -3,6 +3,7 @@ package com.example.demo;
 import java.util.Iterator;
 import java.util.List;
 
+// SaunaBLL va fi defapt ObserverChannel
 public class SaunaBLL {
     private SaunaDAO saunaDAO;
 
