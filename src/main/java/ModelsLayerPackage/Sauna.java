@@ -1,5 +1,6 @@
-package com.example.demo;
+package ModelsLayerPackage;
 
+import com.example.demo.TimeDeserializer;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.springframework.format.annotation.DateTimeFormat;

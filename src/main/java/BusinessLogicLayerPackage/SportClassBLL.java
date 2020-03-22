@@ -1,4 +1,7 @@
-package com.example.demo;
+package BusinessLogicLayerPackage;
+
+import ModelsLayerPackage.SportClass;
+import DAOlayerPackage.SportClassDAO;
 
 import java.util.Iterator;
 import java.util.List;

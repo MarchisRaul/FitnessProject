@@ -1,4 +1,4 @@
-package com.example.demo;
+package ModelsLayerPackage;
 
 public class SportClass {
     private int id_class;

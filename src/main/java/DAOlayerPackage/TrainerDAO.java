@@ -1,4 +1,6 @@
-package com.example.demo;
+package DAOlayerPackage;
+
+import ModelsLayerPackage.Trainer;
 
 public class TrainerDAO extends AbstractDAO<Trainer>{
     public TrainerDAO() {

@@ -1,4 +1,4 @@
-package com.example.demo;
+package DAOlayerPackage;
 
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
@@ -7,8 +7,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.sql.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

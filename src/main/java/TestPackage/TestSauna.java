@@ -1,5 +1,8 @@
-package com.example.demo;
+package TestPackage;
 
+import BusinessLogicLayerPackage.SaunaBLL;
+import DAOlayerPackage.SaunaDAO;
+import ModelsLayerPackage.Sauna;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -8,7 +11,6 @@ import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
 import java.sql.Time;
-import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;

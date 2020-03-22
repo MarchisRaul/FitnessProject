@@ -1,4 +1,7 @@
-package com.example.demo;
+package BusinessLogicLayerPackage;
+
+import ModelsLayerPackage.Sauna;
+import DAOlayerPackage.SaunaDAO;
 
 import java.util.Iterator;
 import java.util.List;

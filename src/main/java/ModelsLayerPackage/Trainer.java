@@ -1,4 +1,4 @@
-package com.example.demo;
+package ModelsLayerPackage;
 
 public class Trainer {
     private int id_trainer_pk;

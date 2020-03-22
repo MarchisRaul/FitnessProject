@@ -1,5 +1,8 @@
-package com.example.demo;
+package TestPackage;
 
+import BusinessLogicLayerPackage.UserBLL;
+import DAOlayerPackage.UserDAO;
+import ModelsLayerPackage.User;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -11,24 +14,24 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
 
-public class TestTrainer {
-    TrainerBLL trainerBLL = null;
+public class TestUser {
+    UserBLL userBLL = null;
 
     @Mock
-    TrainerDAO trainerDAO;
+    UserDAO userDAO;
 
     @Rule
     public MockitoRule rule = MockitoJUnit.rule();
 
     @Before
     public void setUp() {
-        trainerBLL = new TrainerBLL(trainerDAO);
+        userBLL = new UserBLL(userDAO);
     }
 
     @Test
     public void testFindUserById() {
-        when(trainerDAO.findById(1)).thenReturn(new Trainer(1, "Raulucu", 1, 100));
-        assertEquals("Raulucu", trainerBLL.findById(1).getName());
-        verify(trainerDAO).findById(1);
+        when(userDAO.findById(2)).thenReturn(new User(2, "Jamaicana", 1, 21, "7card"));
+        assertEquals("Jamaicana", userBLL.findById(2).getName());
+        verify(userDAO).findById(2);
     }
 }

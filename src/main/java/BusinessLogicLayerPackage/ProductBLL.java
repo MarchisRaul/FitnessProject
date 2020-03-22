@@ -1,4 +1,7 @@
-package com.example.demo;
+package BusinessLogicLayerPackage;
+
+import ModelsLayerPackage.Product;
+import DAOlayerPackage.ProductDAO;
 
 import java.util.Iterator;
 import java.util.List;

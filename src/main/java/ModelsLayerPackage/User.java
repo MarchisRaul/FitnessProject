@@ -1,4 +1,4 @@
-package com.example.demo;
+package ModelsLayerPackage;
 
 public class User {
     private int id_user;

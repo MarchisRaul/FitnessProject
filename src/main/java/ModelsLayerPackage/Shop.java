@@ -1,4 +1,4 @@
-package com.example.demo;
+package ModelsLayerPackage;
 
 public class Shop {
     private int id_shop;

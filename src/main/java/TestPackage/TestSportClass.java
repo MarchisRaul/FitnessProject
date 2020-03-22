@@ -1,14 +1,14 @@
-package com.example.demo;
+package TestPackage;
 
+import BusinessLogicLayerPackage.SportClassBLL;
+import DAOlayerPackage.SportClassDAO;
+import ModelsLayerPackage.SportClass;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
-
-import java.sql.Time;
-import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;

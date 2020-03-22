@@ -1,4 +1,6 @@
-package com.example.demo;
+package DAOlayerPackage;
+
+import ModelsLayerPackage.Product;
 
 public class ProductDAO extends AbstractDAO<Product>{
     public ProductDAO() {
