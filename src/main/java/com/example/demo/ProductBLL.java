@@ -6,8 +6,8 @@ import java.util.List;
 public class ProductBLL {
     private ProductDAO productDAO;
 
-    public ProductBLL() {
-        productDAO = new ProductDAO();
+    public ProductBLL(ProductDAO productDAO) {
+        this.productDAO = productDAO;
     }
 
     public List<Product> findAllProducts() {

@@ -14,19 +14,26 @@ import java.util.List;
 
 @RestController
 public class TestHelloWorld {
-    UserBLL myUsersBLL = new UserBLL();
-    TrainerBLL myTrainerBLL = new TrainerBLL();
-    ShopBLL myShopBLL = new ShopBLL();
-    SaunaBLL mySaunaBLL = new SaunaBLL();
-    ProductBLL myProductBLL = new ProductBLL();
-    SportClassBLL mySportClassBLL = new SportClassBLL();
+    UserDAO userDAO = new UserDAO();
+    UserBLL myUsersBLL = new UserBLL(userDAO);
+    TrainerDAO trainerDAO = new TrainerDAO();
+    TrainerBLL myTrainerBLL = new TrainerBLL(trainerDAO);
+    ShopDAO shopDAO = new ShopDAO();
+    ShopBLL myShopBLL = new ShopBLL(shopDAO);
+    SaunaDAO saunaDAO = new SaunaDAO();
+    SaunaBLL mySaunaBLL = new SaunaBLL(saunaDAO);
+    ProductDAO productDAO = new ProductDAO();
+    ProductBLL myProductBLL = new ProductBLL(productDAO);
+    SportClassDAO sportClassDAO = new SportClassDAO();
+    SportClassBLL mySportClassBLL = new SportClassBLL(sportClassDAO);
 
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss");
 
     ////////////////// USER //////////////////
     @GetMapping("/getUsers")
     public List<User> getUsers() {
-        List<User> myUsers = myUsersBLL.findAllClients();
+        List<User> myUsers = new ArrayList<User>();
+        myUsers = myUsersBLL.findAllClients();
 
         return myUsers;
     }

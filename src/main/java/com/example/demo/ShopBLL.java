@@ -6,8 +6,8 @@ import java.util.List;
 public class ShopBLL {
     private ShopDAO shopDAO;
 
-    public ShopBLL() {
-        shopDAO = new ShopDAO();
+    public ShopBLL(ShopDAO shopDAO) {
+        this.shopDAO = shopDAO;
     }
 
     public List<Shop> findAllShops() {

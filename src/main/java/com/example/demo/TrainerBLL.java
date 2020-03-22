@@ -6,8 +6,8 @@ import java.util.List;
 public class TrainerBLL {
     private TrainerDAO trainerDAO;
 
-    public TrainerBLL() {
-        trainerDAO = new TrainerDAO();
+    public TrainerBLL(TrainerDAO trainerDAO) {
+        this.trainerDAO = trainerDAO;
     }
 
     public List<Trainer> findAllTrainers() {

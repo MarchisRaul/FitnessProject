@@ -7,8 +7,8 @@ import java.util.List;
 public class SaunaBLL {
     private SaunaDAO saunaDAO;
 
-    public SaunaBLL() {
-        saunaDAO = new SaunaDAO();
+    public SaunaBLL(SaunaDAO saunaDAO) {
+        this.saunaDAO = saunaDAO;
     }
 
     public List<Sauna> findAllSaunas() {

@@ -6,8 +6,8 @@ import java.util.List;
 public class SportClassBLL {
     private SportClassDAO sportClassDAO;
 
-    public SportClassBLL() {
-        sportClassDAO = new SportClassDAO();
+    public SportClassBLL(SportClassDAO sportClassDAO) {
+        this.sportClassDAO = sportClassDAO;
     }
 
     public List<SportClass> findAllSportClasses() {

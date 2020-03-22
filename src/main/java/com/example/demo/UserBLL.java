@@ -6,8 +6,8 @@ import java.util.List;
 public class UserBLL {
     private UserDAO userDAO;
 
-    public UserBLL() {
-        userDAO = new UserDAO();
+    public UserBLL(UserDAO userDAO) {
+        this.userDAO = userDAO;
     }
 
     public List<User> findAllClients() {
