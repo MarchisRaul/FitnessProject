@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.example.demo.ConnectionFactory;
+import DatabaseConnection.ConnectionFactory;
 
 /**
  * @Author: Technical University of Cluj-Napoca, Romania Distributed Systems
