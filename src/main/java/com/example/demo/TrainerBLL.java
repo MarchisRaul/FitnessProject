@@ -10,46 +10,50 @@ public class TrainerBLL {
         this.trainerDAO = trainerDAO;
     }
 
+    /**
+     * @return all the trainers from the Trainer table
+     */
     public List<Trainer> findAllTrainers() {
         List<Trainer> trainersList = trainerDAO.findAll();
         return trainersList;
     }
 
+    /**
+     * Inserts a certain trainer into Trainer table
+     * @param trainer = the trainer that will be inserted
+     */
     public void insertTrainer(Trainer trainer) {
         trainerDAO.insert(trainer);
     }
 
-
     /**
-     * se va sterge clientul primit ca parametru din tabela Client
-     *
-     * @param myTrainer reprezinta un client
+     * Deletes a certain trainer from Trainer table
+     * @param myTrainer = the trainer that will be deleted
      */
     public void deleteTrainer(Trainer myTrainer) {
         trainerDAO.delete(myTrainer);
     }
 
     /**
-     * metoda va face update pe clientul din tabel care are id_client egal cu id-ul
-     * primit ca parametru
-     *
-     * @param myTrainer reprezinta un client din tabela Client
-     * @param id       reprezinta un id
+     * Updates a certain trainer from the table which has the id column value equal to the id received as a parameter
+     * @param myTrainer = the new trainer which will substitute the old trainer after the update
+     * @param id = the id received as a parameter
      */
     public void updateTrainer(Trainer myTrainer, int id) {
         trainerDAO.update(myTrainer, id);
     }
 
     /**
-     *
-     * @param id reprezinta un id
-     * @return clientul din tabela Client care are id_client egal cu id-ul primit ca
-     *         parametru
+     * @param id = the id received as a parameter
+     * @return the respective trainer from the Trainer table for which the id column is equal to the id received as a parameter
      */
     public Trainer findById(int id) {
         return trainerDAO.findById(id);
     }
 
+    /**
+     * @return the value of the greatest id column from the Trainer table
+     */
     public int findBiggestTrainerId() {
         int maxId = 0;
         List<Trainer> myList = trainerDAO.findAll();

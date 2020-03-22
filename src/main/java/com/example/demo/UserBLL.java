@@ -10,45 +10,50 @@ public class UserBLL {
         this.userDAO = userDAO;
     }
 
+    /**
+     * @return all the users from the User table
+     */
     public List<User> findAllClients() {
         List<User> usersList = userDAO.findAll();
         return usersList;
     }
 
+    /**
+     * Inserts a certain user into User table
+     * @param user = the user that will be inserted
+     */
     public void insertClient(User user) {
         userDAO.insert(user);
     }
 
     /**
-     * se va sterge clientul primit ca parametru din tabela Client
-     *
-     * @param myClient reprezinta un client
+     * Deletes a certain user from User table
+     * @param user = the user that will be deleted
      */
-    public void deleteClient(User myClient) {
-        userDAO.delete(myClient);
+    public void deleteClient(User user) {
+        userDAO.delete(user);
     }
 
     /**
-     * metoda va face update pe clientul din tabel care are id_client egal cu id-ul
-     * primit ca parametru
-     *
-     * @param myClient reprezinta un client din tabela Client
-     * @param id       reprezinta un id
+     * Updates a certain user from the table which has the id column value equal to the id received as a parameter
+     * @param myUser = the new user which will substitute the old user after the update
+     * @param id = the id received as a parameter
      */
-    public void updateClient(User myClient, int id) {
-        userDAO.update(myClient, id);
+    public void updateClient(User myUser, int id) {
+        userDAO.update(myUser, id);
     }
 
     /**
-     *
-     * @param id reprezinta un id
-     * @return clientul din tabela Client care are id_client egal cu id-ul primit ca
-     *         parametru
+     * @param id = the id received as a parameter
+     * @return the respective user from the User table for which the id column is equal to the id received as a parameter
      */
     public User findById(int id) {
         return userDAO.findById(id);
     }
 
+    /**
+     * @return the value of the greatest id column from the User table
+     */
     public int findBiggestUserId() {
         int maxId = 0;
         List<User> myList = userDAO.findAll();

@@ -10,45 +10,50 @@ public class ProductBLL {
         this.productDAO = productDAO;
     }
 
+    /**
+     * @return all the products from the Product table
+     */
     public List<Product> findAllProducts() {
         List<Product> productsList = productDAO.findAll();
         return productsList;
     }
 
+    /**
+     * Inserts a certain product into Product table
+     * @param product = the product that will be inserted
+     */
     public void insertProduct(Product product) {
         productDAO.insert(product);
     }
 
     /**
-     * se va sterge clientul primit ca parametru din tabela Client
-     *
-     * @param myProduct reprezinta un client
+     * Deletes a certain product from Product table
+     * @param myProduct = the product that will be deleted
      */
     public void deleteProduct(Product myProduct) {
         productDAO.delete(myProduct);
     }
 
     /**
-     * metoda va face update pe clientul din tabel care are id_client egal cu id-ul
-     * primit ca parametru
-     *
-     * @param myProduct reprezinta un client din tabela Client
-     * @param id       reprezinta un id
+     * Updates a certain product from the table which has the id column value equal to the id received as a parameter
+     * @param myProduct = the new product which will substitute the old product after the update
+     * @param id = the id received as a parameter
      */
     public void updateProduct(Product myProduct, int id) {
         productDAO.update(myProduct, id);
     }
 
     /**
-     *
-     * @param id reprezinta un id
-     * @return clientul din tabela Client care are id_client egal cu id-ul primit ca
-     *         parametru
+     * @param id = the id received as a parameter
+     * @return the respective product from the Product table for which the id column is equal to the id received as a parameter
      */
     public Product findById(int id) {
         return productDAO.findById(id);
     }
 
+    /**
+     * @return the value of the greatest id column from the Product table
+     */
     public int findBiggestProductId() {
         int maxId = 0;
         List<Product> myList = productDAO.findAll();

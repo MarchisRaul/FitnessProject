@@ -33,8 +33,7 @@ public class ConnectionFactory {
     }
 
     /**
-     *
-     * @return conexiunea la baza de date
+     * @return database connection
      */
     private Connection createConnection() {
         Connection connection = null;
@@ -48,17 +47,15 @@ public class ConnectionFactory {
     }
 
     /**
-     *
-     * @return o instanta a clasei ConnectionFactory
+     * @return a single-tone (instance of ConnectionFactory)
      */
     public static Connection getConnection() {
         return singleInstance.createConnection();
     }
 
     /**
-     * metoda inchide conexiunea
-     *
-     * @param connection conexiunea la baza de date
+     * close the database connection
+     * @param connection = the database connection that is wanted to be closed
      */
     public static void close(Connection connection) {
         if (connection != null) {
@@ -71,9 +68,8 @@ public class ConnectionFactory {
     }
 
     /**
-     * inchide statement-ul
-     *
-     * @param statement un obiect de tipul Statement
+     * close the statement executed by one of the possible actions implemented
+     * @param statement = the statement that is wanted to be closed
      */
     public static void close(Statement statement) {
         if (statement != null) {
@@ -86,9 +82,8 @@ public class ConnectionFactory {
     }
 
     /**
-     * inchide resultSet-ul
-     *
-     * @param resultSet un obiect de tipul ResultSet
+     * close the result set resulted after executing a certain action
+     * @param resultSet = the result set that is wanted to be closed
      */
     public static void close(ResultSet resultSet) {
         if (resultSet != null) {

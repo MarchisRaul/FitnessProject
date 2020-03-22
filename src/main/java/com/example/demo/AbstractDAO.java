@@ -35,9 +35,8 @@ public class AbstractDAO<T> {
     }
 
     /**
-     *
-     * @param fields = numele variabilelor instanta cu care este apelata metoda
-     * @return query ce afiseaza toate randurile pentru id-ul trimis prin "?"
+     * @param fields = variable names of the required table
+     * @return the query that selects a row based on the value of the first column of that table
      */
     private String createSelectQuery(String[] fields) {
         StringBuilder sb = new StringBuilder();
@@ -50,8 +49,7 @@ public class AbstractDAO<T> {
     }
 
     /**
-     *
-     * @return query ce afiseaza toate randurile dintr-un tabel
+     * @return the query that selects all rows from a certain table
      */
     public String createFindAllQuery() {
         StringBuilder sb = new StringBuilder();
@@ -64,10 +62,8 @@ public class AbstractDAO<T> {
     }
 
     /**
-     *
-     * @param fields = numele variabilelor instanta cu care este apelata metoda
-     * @return query ce sterge toate randul dintr-un tabel pentru care id-ul este
-     *         egal cu "?"
+     * @param fields = variable names of the required table
+     * @return the query that deletes a certain row based on the value of the first column of that table
      */
     public String createDeleteQuery(String[] fields) {
         StringBuilder sb = new StringBuilder();
@@ -83,10 +79,8 @@ public class AbstractDAO<T> {
     }
 
     /**
-     *
-     * @param fields = numele variabilelor instanta cu care este apelata metoda
-     * @return query ce realizeaza update-ul unui rand din tabel pentru care id-ul
-     *         este egal cu "?"
+     * @param fields = variable names of the required table
+     * @return the query that updates a certain row from a table based on the value of the first column of that table (
      */
     public String createUpdateQuery(String[] fields) {
         StringBuilder sb = new StringBuilder();
@@ -108,12 +102,10 @@ public class AbstractDAO<T> {
     }
 
     /**
-     *
-     * @param fields = numele variabilelor instanta cu care este apelata metoda
-     * @return query ce va insera o linie intr-un tabel
+     * @param fields = variable names of the required table
+     * @return the query that inserts a new row in a certain table
      */
     public String insertQuery(String[] fields) {
-        // String query = "INSERT INTO records (id, time) VALUES (?, ?)";
         StringBuilder sb = new StringBuilder();
         sb.append("INSERT ");
         sb.append("INTO ");
@@ -138,9 +130,7 @@ public class AbstractDAO<T> {
     }
 
     /**
-     *
-     * @return o lista cu toate randurile dintr-un tabel cu care se apeleaza aceasta
-     *         metoda
+     * @return a list with all the rows from a certain table
      */
     public List<T> findAll() {
         Connection connection = null;
@@ -165,10 +155,8 @@ public class AbstractDAO<T> {
     }
 
     /**
-     *
-     * @param id reprezinta id-ul unui client / produs / comanda
-     * @return obiectul din tabelul cu care se apeleaza aceasta metoda si care are
-     *         id-ul primit ca parametru
+     * @param id = the id of a certain row from a table
+     * @return the row from a table for which the id (first column) is equal to the id received as a parameter
      */
     public T findById(int id) {
         Connection connection = null;
@@ -202,9 +190,8 @@ public class AbstractDAO<T> {
     }
 
     /**
-     *
-     * @param resultSet reprezinta toate randurile dintr-un tabel
-     * @return o lista cu obiectele din acel tabel
+     * @param resultSet = the rows from a certain table resulted after executing a specific query
+     * @return a list with the objects created from the resultSet parameter
      */
     private List<T> createObjects(ResultSet resultSet) {
         List<T> list = new ArrayList<T>();
@@ -240,10 +227,8 @@ public class AbstractDAO<T> {
     }
 
     /**
-     * metoda insereaza un element intr-o tabela
-     *
-     * @param t un obiect generic
-     * @return obiectul generic t
+     * @param t = generic parameter which will be substituted with the instance type of the object that is wanted to be inserted into a table
+     * @return the generic object t that wants to be inserted
      */
     public T insert(T t) {
         Connection connection = null;
@@ -300,12 +285,9 @@ public class AbstractDAO<T> {
     }
 
     /**
-     * metoda efectueaza un update intr-un tabel, la campul care are id-ul egal cu
-     * cel primit ca parametru
-     *
-     * @param t  un obiect generic
-     * @param id un id
-     * @return obiectul t
+     * @param t = generic parameter which will be substituted with the instance type of the object that is wanted a row to be updated with from a table
+     * @param id = the id of the old objects that is going to be updated
+     * @return the generic object t that is going to substitute the old object
      */
     public T update(T t, int id) {
         Connection connection = null;
@@ -362,9 +344,7 @@ public class AbstractDAO<T> {
     }
 
     /**
-     * metoda sterge obiectul primit din tabela de catre care este apelata
-     *
-     * @param t un obiect generic
+     * @param t = generic parameter which will be substituted with the instance type of the object that is wanted to be deleted from a table
      */
     public void delete(T t) {
         Connection connection = null;
