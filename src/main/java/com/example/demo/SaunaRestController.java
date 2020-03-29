@@ -38,16 +38,6 @@ public class SaunaRestController {
         return mySaunaBLL.findById(id);
     }
 
-    @GetMapping("/testObserver")
-    public void testObserver() {
-        SaunaBLL saunaBLL = new SaunaBLL(new SaunaDAO());
-        UserBLL userBLL = new UserBLL(new UserDAO());
-        List<User> users = userBLL.findAllClients();
-        for (User currentUser : users) {
-            saunaBLL.addObserver(currentUser);
-        }
-    }
-
     @RequestMapping(value={"/deleteSauna", "/updateSauna", "/insertSauna"}, method = RequestMethod.POST)
     public String performSaunaPostRequests(@RequestBody Sauna sauna, HttpServletRequest request) {
         if(request.getServletPath().equals("/deleteSauna")) {

@@ -6,7 +6,7 @@ import DAOlayerPackage.UserDAO;
 import java.util.Iterator;
 import java.util.List;
 
-public class UserBLL {
+public class UserBLL implements ObserverChannel{
     private UserDAO userDAO;
 
     public UserBLL(UserDAO userDAO) {
@@ -68,5 +68,14 @@ public class UserBLL {
         }
 
         return maxId;
+    }
+
+    @Override
+    public void update(String message) {
+        List<User> myUsers = this.findAllClients();
+        for (User currentUser : myUsers) {
+            currentUser.setFree_saunas_info(message);
+            this.updateClient(currentUser, currentUser.getId_user());
+        }
     }
 }

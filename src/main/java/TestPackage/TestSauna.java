@@ -13,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
+import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
 
@@ -45,12 +46,11 @@ public class TestSauna {
     public void testObserverPattern() {
         SaunaBLL saunaBLL = new SaunaBLL(new SaunaDAO());
         UserBLL userBLL = new UserBLL(new UserDAO());
-        List<User> users = userBLL.findAllClients();
-        for (User currentUser : users) {
-            saunaBLL.addObserver(currentUser);
-        }
+        saunaBLL.addObserver(userBLL);
 
-        saunaBLL.insertSauna(new Sauna(13, 0, new Time(1, 45, 0), 10));
-        assertEquals("a", "a");
+        int lastSaunaId = saunaBLL.findBiggestSaunaId();
+        Sauna sauna = saunaBLL.findById(lastSaunaId);
+        saunaBLL.updateSauna(new Sauna(sauna.getId_sauna(), 0, new Date(10000), 30), lastSaunaId);
+        assertEquals("Free sauna ids: 1, 2, " + " HURRY UP!", userBLL.findById(userBLL.findBiggestUserId()).getFree_saunas_info());
     }
 }

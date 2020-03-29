@@ -197,10 +197,12 @@ public class AbstractDAO<T> {
             while (resultSet.next()) {
                 T instance = type.getDeclaredConstructor().newInstance();
                 for (Field field : type.getDeclaredFields()) {
+
                     Object value = resultSet.getObject(field.getName());
                     PropertyDescriptor propertyDescriptor = new PropertyDescriptor(field.getName(), type);
                     Method method = propertyDescriptor.getWriteMethod();
                     method.invoke(instance, value);
+
                 }
                 list.add(instance);
             }
@@ -235,8 +237,10 @@ public class AbstractDAO<T> {
         Field[] fields = type.getDeclaredFields();
         String[] fieldsName = new String[fields.length];
         Object[] valuesForFields = new Object[fields.length];
-        for (int i = 0; i < fields.length; i++)
+
+        for (int i = 0; i < fields.length; i++) {
             fieldsName[i] = fields[i].getName();
+        }
 
         int j = 0;
         for (Field field : fields) {
@@ -260,7 +264,11 @@ public class AbstractDAO<T> {
 
             for (int i = 0; i < valuesForFields.length; i++)
                 if (valuesForFields[i].getClass().getSimpleName().equals("Integer") || valuesForFields[i].getClass().getSimpleName().equals("int"))
-                    statement.setInt(i + 1, ((Integer) valuesForFields[i]).intValue());
+                    if (valuesForFields[i] == null) {
+                        statement.setInt(i+1, -1);
+                    } else {
+                        statement.setInt(i + 1, ((Integer) valuesForFields[i]).intValue());
+                    }
                 else if (valuesForFields[i].getClass().getSimpleName().equals("String"))
                     statement.setString(i + 1, ((String) valuesForFields[i]));
                 else if (valuesForFields[i].getClass().getSimpleName().equals("Float"))

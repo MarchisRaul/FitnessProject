@@ -16,21 +16,29 @@ public class SaunaBLL {
 
     public SaunaBLL(SaunaDAO saunaDAO) {
         this.saunaDAO = saunaDAO;
-        UserBLL userBLL = new UserBLL(new UserDAO());
-        List<User> users = userBLL.findAllClients();
-        for(User currentUser : users) {
-            this.addObserver(currentUser);
-        }
+        ObserverChannel userObservers = new UserBLL(new UserDAO());
+        this.addObserver(userObservers);
     }
 
+    /**
+     * Adds an observer to the current observers
+     * @param channel = the observer that is going to be added
+     */
     public void addObserver(ObserverChannel channel) {
         this.channels.add(channel);
     }
 
+    /**
+     * Removes an observer from the currentObservers
+     * @param channel = the observer that is going to be removed
+     */
     public void removeObserver(ObserverChannel channel) {
         this.channels.remove(channel);
     }
 
+    /**
+     * After inserting a new sauna or updating an existing one, the method will be called in order to notify all the observers about the new free saunas
+     */
     public void checkForFreeSauna() {
         List<Sauna> saunasList = this.findAllSaunas();
         List<Integer> freeSaunasIdList = new ArrayList<>();
@@ -49,7 +57,7 @@ public class SaunaBLL {
             saunasIdString = saunasIdString + currentId + ", ";
         }
         for (ObserverChannel currentChannel : channels) {
-            currentChannel.update("the following saunas are free to join: " + saunasIdString + " HURRY UP!");
+            currentChannel.update("Free sauna ids: " + saunasIdString + " HURRY UP!");
         }
     }
 

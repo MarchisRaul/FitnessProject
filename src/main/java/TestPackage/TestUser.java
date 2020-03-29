@@ -30,7 +30,7 @@ public class TestUser {
 
     @Test
     public void testFindUserById() {
-        when(userDAO.findById(2)).thenReturn(new User(2, "Jamaicana", 1, 21, "7card"));
+        when(userDAO.findById(2)).thenReturn(new User(2, "Jamaicana", 1, 21, "7card",""));
         assertEquals("Jamaicana", userBLL.findById(2).getName());
         verify(userDAO).findById(2);
     }

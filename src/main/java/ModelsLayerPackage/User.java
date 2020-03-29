@@ -2,19 +2,21 @@ package ModelsLayerPackage;
 
 import BusinessLogicLayerPackage.ObserverChannel;
 
-public class User implements ObserverChannel {
+public class User {
     private int id_user;
     private String name;
     private int id_trainer_fkk;
     private int age;
     private String card_type;
+    private String free_saunas_info;
 
-    public User(int id_user, String name, int id_trainer_fkk, int age, String card_type) {
+    public User(int id_user, String name, int id_trainer_fkk, int age, String card_type, String free_saunas_info) {
         this.id_user = id_user;
         this.name = name;
         this.id_trainer_fkk = id_trainer_fkk;
         this.age = age;
         this.card_type = card_type;
+        this.free_saunas_info = free_saunas_info;
     }
 
     public User() {
@@ -61,8 +63,11 @@ public class User implements ObserverChannel {
         this.card_type = card_type;
     }
 
-    @Override
-    public void update(String message) {
-        System.out.println("Dear " + name + ", " + message);
+    public String getFree_saunas_info() {
+        return free_saunas_info;
+    }
+
+    public void setFree_saunas_info(String free_saunas_info) {
+        this.free_saunas_info = free_saunas_info;
     }
 }
