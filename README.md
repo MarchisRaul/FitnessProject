@@ -44,5 +44,6 @@ Testarea anumitor metode se face prin intermediul API-ului Mockito.
 Partea de front-end reprezintă interfața grafică prietenoasă prin care utilizatorul va putea beneficia de aplicație. Aceasta va fi realizată în Android.
 
 # Diagrame
+### Diagrama bazei de date
 ![Database image](Untitled.png)
 
