@@ -43,4 +43,4 @@ Testarea anumitor metode se face prin intermediul API-ului Mockito.
 ### Front-end
 Partea de front-end reprezintă interfața grafică prietenoasă prin care utilizatorul va putea beneficia de aplicație. Aceasta va fi realizată în Android.
 
-![https://www.dropbox.com/h?preview=Untitled.png](https://www.dropbox.com/h?preview=Untitled.png)
+![](C:\Users\Maerchis\Desktop\Poli anu 3 sem 1\IS\EXAMEN\Untitled.png)
