@@ -1,6 +1,8 @@
 package ModelsLayerPackage;
 
-public class User {
+import BusinessLogicLayerPackage.ObserverChannel;
+
+public class User implements ObserverChannel {
     private int id_user;
     private String name;
     private int id_trainer_fkk;
@@ -57,5 +59,10 @@ public class User {
 
     public void setCard_type(String card_type) {
         this.card_type = card_type;
+    }
+
+    @Override
+    public void update(String message) {
+        System.out.println("Dear " + name + ", " + message);
     }
 }

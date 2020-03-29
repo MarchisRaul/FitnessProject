@@ -7,10 +7,14 @@ import org.springframework.web.bind.annotation.*;
 
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.Date;
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 @RestController
 public class SaunaRestController {
@@ -32,6 +36,16 @@ public class SaunaRestController {
             return new Sauna(-1, -1, new java.sql.Time(1, 45, 0), -1);
         }
         return mySaunaBLL.findById(id);
+    }
+
+    @GetMapping("/testObserver")
+    public void testObserver() {
+        SaunaBLL saunaBLL = new SaunaBLL(new SaunaDAO());
+        UserBLL userBLL = new UserBLL(new UserDAO());
+        List<User> users = userBLL.findAllClients();
+        for (User currentUser : users) {
+            saunaBLL.addObserver(currentUser);
+        }
     }
 
     @RequestMapping(value={"/deleteSauna", "/updateSauna", "/insertSauna"}, method = RequestMethod.POST)

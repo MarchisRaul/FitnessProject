@@ -1,16 +1,56 @@
 package BusinessLogicLayerPackage;
 
+import DAOlayerPackage.UserDAO;
 import ModelsLayerPackage.Sauna;
 import DAOlayerPackage.SaunaDAO;
+import ModelsLayerPackage.User;
 
+
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class SaunaBLL {
     private SaunaDAO saunaDAO;
+    private List<ObserverChannel> channels = new ArrayList<>();
 
     public SaunaBLL(SaunaDAO saunaDAO) {
         this.saunaDAO = saunaDAO;
+        UserBLL userBLL = new UserBLL(new UserDAO());
+        List<User> users = userBLL.findAllClients();
+        for(User currentUser : users) {
+            this.addObserver(currentUser);
+        }
+    }
+
+    public void addObserver(ObserverChannel channel) {
+        this.channels.add(channel);
+    }
+
+    public void removeObserver(ObserverChannel channel) {
+        this.channels.remove(channel);
+    }
+
+    public void checkForFreeSauna() {
+        List<Sauna> saunasList = this.findAllSaunas();
+        List<Integer> freeSaunasIdList = new ArrayList<>();
+        for (Sauna currentSauna : saunasList) {
+            if (currentSauna.getOccupied() == 0) {
+                freeSaunasIdList.add(currentSauna.getId_sauna());
+            }
+        }
+
+        if (freeSaunasIdList.size() == 0) {
+            return;
+        }
+
+        String saunasIdString = "";
+        for (Integer currentId : freeSaunasIdList) {
+            saunasIdString = saunasIdString + currentId + ", ";
+        }
+        for (ObserverChannel currentChannel : channels) {
+            currentChannel.update("the following saunas are free to join: " + saunasIdString + " HURRY UP!");
+        }
     }
 
     /**
@@ -27,6 +67,7 @@ public class SaunaBLL {
      */
     public void insertSauna(Sauna sauna) {
         saunaDAO.insert(sauna);
+        this.checkForFreeSauna();
     }
 
     /**
@@ -44,6 +85,7 @@ public class SaunaBLL {
      */
     public void updateSauna(Sauna mySauna, int id) {
         saunaDAO.update(mySauna, id);
+        this.checkForFreeSauna();
     }
 
     /**
