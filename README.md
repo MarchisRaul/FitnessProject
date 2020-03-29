@@ -47,7 +47,7 @@ Partea de front-end reprezintă interfața grafică prietenoasă prin care utili
 ### Diagrama bazei de date
 ![Database image](Untitled.png)
 
-### Diagrama design pattern-ului observer
+### Diagramă Design Pattern Observer
 
 Design pattern-ul observer este folosit pentru a informa toti utilizatorii aplicației despre saunele care au locuri disponibile, în momentul în care cineva părăsește o saună, sau o nouă saună a fost băgată în funcțiune. 
 Ca implementare, se folosește o interfată ObserverChannel, implementată de către UserBLL. Clasa SaunaBLL, are ca variabilă instanță o listă de obiecte de tipul ObserverChannel. În momentul în care, se face update/insert la o saună care are field-ul <occupied> setat la  0, se va apela metoda checkForFreeSauna() din SaunaBLL, care notifică toți observatorii că a avut loc o modificare, apelând metoda update(). În UserBLL, metoda update a fost suprascrisă și aceasta modifică field-ul <free_sauna_info> pentru fiecare user în parte, direct în baza de date.
