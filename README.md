@@ -44,3 +44,4 @@ Testarea anumitor metode se face prin intermediul API-ului Mockito.
 Partea de front-end reprezintă interfața grafică prietenoasă prin care utilizatorul va putea beneficia de aplicație. Aceasta va fi realizată în Android.
 
 [![Beautiful place.]](https://ibb.co/Kms1csx)
+![Database image](Untitled.png)
