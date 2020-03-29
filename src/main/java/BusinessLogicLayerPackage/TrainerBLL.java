@@ -55,6 +55,14 @@ public class TrainerBLL {
     }
 
     /**
+     * @param name = the name received as a parameter
+     * @return the respective trainer from the Trainer table for which the name column is equal to the name received as a parameter
+     */
+    public Trainer findByName(String name) {
+        return trainerDAO.findByName(name);
+    }
+
+    /**
      * @return the value of the greatest id column from the Trainer table
      */
     public int findBiggestTrainerId() {

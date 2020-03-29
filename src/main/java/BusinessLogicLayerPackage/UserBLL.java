@@ -55,6 +55,14 @@ public class UserBLL implements ObserverChannel{
     }
 
     /**
+     * @param name = the name received as a parameter
+     * @return the respective user from the User table for which the name column is equal to the name received as a parameter
+     */
+    public User findByName(String name) {
+        return userDAO.findByName(name);
+    }
+
+    /**
      * @return the value of the greatest id column from the User table
      */
     public int findBiggestUserId() {

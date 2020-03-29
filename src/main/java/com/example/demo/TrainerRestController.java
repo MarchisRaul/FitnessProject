@@ -32,6 +32,11 @@ public class TrainerRestController {
         return myTrainerBLL.findById(id);
     }
 
+    @GetMapping("/findTrainerByName")
+    public Trainer findTrainersByNameRequest(@RequestBody String name) {
+        return myTrainerBLL.findByName(name);
+    }
+
     @RequestMapping(value={"/deleteTrainer", "/updateTrainer", "/insertTrainer"}, method = RequestMethod.POST)
     public String performTrainerPostRequests(@RequestBody Trainer trainer, HttpServletRequest request) {
         if(request.getServletPath().equals("/deleteTrainer")) {

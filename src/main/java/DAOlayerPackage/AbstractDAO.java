@@ -46,6 +46,16 @@ public class AbstractDAO<T> {
         return sb.toString();
     }
 
+    private String findByNameQuery() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("SELECT ");
+        sb.append(" * ");
+        sb.append(" FROM ");
+        sb.append("fitnesscarddb." + type.getSimpleName());
+        sb.append(" WHERE name" + " = ?");
+        return sb.toString();
+    }
+
     /**
      * @return the query that selects all rows from a certain table
      */
@@ -188,6 +198,41 @@ public class AbstractDAO<T> {
     }
 
     /**
+     * @param name = the name of a certain row from a table
+     * @return the row from a table for which the name column is equal to the name received as a parameter
+     */
+    public T findByName(String name) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        Field[] fields = type.getDeclaredFields();
+        String[] fieldsName = new String[fields.length];
+        Object[] valuesForFields = new Object[fields.length];
+        for (int i = 0; i < fields.length; i++)
+            fieldsName[i] = fields[i].getName();
+
+        String query = findByNameQuery();
+        try {
+            connection = ConnectionFactory.getConnection();
+            statement = connection.prepareStatement(query);
+            statement.setString(1, name);
+            resultSet = statement.executeQuery();
+
+
+            return createObjects(resultSet).get(0);
+        } catch (SQLException e) {
+            LOGGER.log(Level.WARNING, type.getName() + "DAO:findById " + e.getMessage());
+        } catch(Exception exp) {
+            return null;
+        } finally {
+            ConnectionFactory.close(resultSet);
+            //ConnectionFactory.close(statement);
+            ConnectionFactory.close(connection);
+        }
+        return null;
+    }
+
+    /**
      * @param resultSet = the rows from a certain table resulted after executing a specific query
      * @return a list with the objects created from the resultSet parameter
      */
@@ -264,11 +309,7 @@ public class AbstractDAO<T> {
 
             for (int i = 0; i < valuesForFields.length; i++)
                 if (valuesForFields[i].getClass().getSimpleName().equals("Integer") || valuesForFields[i].getClass().getSimpleName().equals("int"))
-                    if (valuesForFields[i] == null) {
-                        statement.setInt(i+1, -1);
-                    } else {
-                        statement.setInt(i + 1, ((Integer) valuesForFields[i]).intValue());
-                    }
+                    statement.setInt(i + 1, ((Integer) valuesForFields[i]).intValue());
                 else if (valuesForFields[i].getClass().getSimpleName().equals("String"))
                     statement.setString(i + 1, ((String) valuesForFields[i]));
                 else if (valuesForFields[i].getClass().getSimpleName().equals("Float"))

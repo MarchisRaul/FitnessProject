@@ -55,6 +55,14 @@ public class ProductBLL {
     }
 
     /**
+     * @param name = the name received as a parameter
+     * @return the respective product from the Product table for which the name column is equal to the name received as a parameter
+     */
+    public Product findByName(String name) {
+        return productDAO.findByName(name);
+    }
+
+    /**
      * @return the value of the greatest id column from the Product table
      */
     public int findBiggestProductId() {

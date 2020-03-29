@@ -34,6 +34,11 @@ public class ProductRestController {
         return myProductBLL.findById(id);
     }
 
+    @GetMapping("/findProductByName")
+    public Product findProductByNameRequest(@RequestBody String name){
+        return myProductBLL.findByName(name);
+    }
+
     @RequestMapping(value={"/deleteProduct", "/updateProduct", "/insertProduct"}, method = RequestMethod.POST)
     public String performProductPostRequests(@RequestBody Product product, HttpServletRequest request) {
         if(request.getServletPath().equals("/deleteProduct")) {

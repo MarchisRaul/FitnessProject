@@ -34,6 +34,11 @@ public class SportClassRestController {
         return mySportClassBLL.findById(id);
     }
 
+    @GetMapping("/findSportClassByName")
+    public SportClass findSportClassByNameRequests(@RequestBody String name){
+        return mySportClassBLL.findByName(name);
+    }
+
     @RequestMapping(value={"/deleteSportClass", "/updateSportClass", "/insertSportClass"}, method = RequestMethod.POST)
     public String performSportClassPostRequest(@RequestBody SportClass sportClass, HttpServletRequest request) {
         if(request.getServletPath().equals("/deleteSportClass")) {

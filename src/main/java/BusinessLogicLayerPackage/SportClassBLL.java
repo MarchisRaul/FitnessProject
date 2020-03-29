@@ -55,6 +55,14 @@ public class SportClassBLL {
     }
 
     /**
+     * @param name = the name received as a parameter
+     * @return the respective sport class from the SportClass table for which the name column is equal to the name received as a parameter
+     */
+    public SportClass findByName(String name) {
+        return sportClassDAO.findByName(name);
+    }
+
+    /**
      * @return the value of the greatest id column from the SportClass table
      */
     public int findBiggestSportClassId() {

@@ -33,6 +33,11 @@ public class UserRestController {
         return myUsersBLL.findById(id);
     }
 
+    @GetMapping("/findUserByName")
+    public User findUserByNameRequest(@RequestBody String name){
+        return myUsersBLL.findByName(name);
+    }
+
     @RequestMapping(value={"/deleteUser", "/updateUser", "/insertUser"}, method = RequestMethod.POST)
     public String performUserPostRequests(@RequestBody User user, HttpServletRequest request) {
         if(request.getServletPath().equals("/deleteUser")) {
