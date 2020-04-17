@@ -9,7 +9,8 @@ import java.util.List;
 public class UserBLL implements ObserverChannel{
     private UserDAO userDAO;
 
-    public UserBLL(UserDAO userDAO) {
+    public UserBLL(UserDAO userDAO)
+    {
         this.userDAO = userDAO;
     }
 

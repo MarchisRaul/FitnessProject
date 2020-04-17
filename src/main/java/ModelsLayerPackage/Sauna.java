@@ -64,4 +64,10 @@ public class Sauna {
     public void setSize_number(int size_number) {
         this.size_number = size_number;
     }
+
+    public void incrementSizeNumber() {
+        if (size_number < 20) {
+            size_number++;
+        }
+    }
 }
