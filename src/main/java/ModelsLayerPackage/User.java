@@ -10,8 +10,9 @@ public class User {
     private String card_type;
     private String free_saunas_info;
     private int id_sauna_fk;
+    private int money_card;
 
-    public User(int id_user, String name, int id_trainer_fkk, int age, String card_type, String free_saunas_info, int id_sauna_fk) {
+    public User(int id_user, String name, int id_trainer_fkk, int age, String card_type, String free_saunas_info, int id_sauna_fk, int money_card) {
         this.id_user = id_user;
         this.name = name;
         this.id_trainer_fkk = id_trainer_fkk;
@@ -19,6 +20,7 @@ public class User {
         this.card_type = card_type;
         this.free_saunas_info = free_saunas_info;
         this.id_sauna_fk = id_sauna_fk;
+        this.money_card = money_card;
     }
 
     public User() {
@@ -79,5 +81,13 @@ public class User {
 
     public void setId_sauna_fk(int id_sauna_fk) {
         this.id_sauna_fk = id_sauna_fk;
+    }
+
+    public int getMoney_card() {
+        return money_card;
+    }
+
+    public void setMoney_card(int money_card) {
+        this.money_card = money_card;
     }
 }

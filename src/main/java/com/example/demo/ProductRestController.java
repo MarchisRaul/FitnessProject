@@ -35,7 +35,7 @@ public class ProductRestController {
     }
 
     @GetMapping("/findProductByName")
-    public Product findProductByNameRequest(@RequestBody String name){
+    public Product findProductByNameRequest(@RequestBody String name) {
         return myProductBLL.findByName(name);
     }
 
