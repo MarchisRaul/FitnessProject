@@ -9,6 +9,10 @@ public class UserProduct {
         this.id_product = id_product;
     }
 
+    public UserProduct() {
+        
+    }
+
     public int getId_user() {
         return id_user;
     }

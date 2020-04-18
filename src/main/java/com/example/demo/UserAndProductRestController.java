@@ -9,21 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-class NameWrapper {
-    List<String> products;
-
-    public List<String> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<String> products) {
-        this.products = products;
-    }
-}
+import java.util.*;
 
 @RestController
 public class UserAndProductRestController {
@@ -36,23 +22,72 @@ public class UserAndProductRestController {
     UserProductDAO userProductDAO = new UserProductDAO();
     UserProductBLL userProductBLL = new UserProductBLL(userProductDAO);
 
-    @GetMapping("/getPairsUserProduct")
-    public List<UserProduct> findAllUserProductPairs() {
-        List<UserProduct> userProducts = userProductBLL.findAllPairs();
+    ShopDAO shopDAO = new ShopDAO();
+    ShopBLL shopBLL = new ShopBLL(shopDAO);
 
-        return userProducts;
+    @GetMapping("/getProductsForUser")
+    public String getProductsForUserRequest(@RequestBody String nameOfUser) {
+        User user = myUserBLL.findByName(nameOfUser);
+
+        if (user == null) {
+            return "Something went wrong because your name was not found in the database!";
+        }
+
+        List<UserProduct> userProducts = userProductBLL.findAllPairs();
+        if (userProducts == null) {
+            return "Dear user " + nameOfUser + " your shopping history is empty!";
+        }
+
+        Map<String, Integer> mapToBeReturned = new HashMap<String, Integer>();
+
+        for (UserProduct currentPair : userProducts) {
+            if (currentPair.getId_user() == user.getId_user()) {
+                String product = myProductBLL.findById(currentPair.getId_product()).getName();
+                if (mapToBeReturned.containsKey(product)) {
+                    mapToBeReturned.put(product, mapToBeReturned.get(product) + 1);
+                } else {
+                    mapToBeReturned.put(product, 1);
+                }
+            }
+        }
+
+        String stringToBeReturned = "Dear " + nameOfUser + ", the products you bought in the past are: \n";
+        for (Map.Entry<String, Integer> currentEntry : mapToBeReturned.entrySet()) {
+            stringToBeReturned += currentEntry.getValue() + " x " + currentEntry.getKey() + "\n";
+        }
+        return stringToBeReturned;
+    }
+
+    @GetMapping("/getUsersForProduct")
+    public String getUsersForProductRequest(@RequestBody String nameOfProduct) {
+        Product product = myProductBLL.findByName(nameOfProduct);
+
+        if (product == null) {
+            return "Sorry but the product " + nameOfProduct + " does not exist in the database!";
+        }
+
+        List<UserProduct> userProductPairs = userProductBLL.findAllPairs();
+        Set<String> users = new HashSet<String>();
+        for (UserProduct currentPair : userProductPairs) {
+            if (currentPair.getId_product() == product.getId_product()) {
+                users.add(myUserBLL.findById(currentPair.getId_user()).getName());
+            }
+        }
+
+        if (users == null || users.size() == 0) {
+            return "Sorry but the product " + nameOfProduct + " was not bought by anyone till present!";
+        }
+
+        String stringToBeReturned = "Users who bought the product " + nameOfProduct + " in the past are: \n";
+        for (String currentUserName : users) {
+            stringToBeReturned += currentUserName + "\n";
+        }
+
+        return stringToBeReturned;
     }
 
     @RequestMapping(value={"/buyProductsForUser"}, method = RequestMethod.POST)
-    public String buyProductForUser(@RequestBody String nameOfUser, @RequestBody NameWrapper nameOfProductss, HttpServletRequest request) {
-//        String nameOfUser = "";
-        List<String> nameOfProducts = new ArrayList<String>();
-        nameOfProducts = nameOfProductss.getProducts();
-//
-//        for (Map.Entry<String, List<String>> entry : json.entrySet()) {
-//            nameOfUser = entry.getKey();
-//            nameOfProducts = entry.getValue();
-//        }
+    public String buyProductForUser(@RequestParam(value="nameOfUser") String nameOfUser, @RequestParam(value="nameOfProducts") List<String> nameOfProducts, HttpServletRequest request) {
 
         User user = myUserBLL.findByName(nameOfUser);
         if (user == null) {
@@ -73,6 +108,14 @@ public class UserAndProductRestController {
             product.setQuantity(product.getQuantity() - 1);
             listOfBoughtProducts.add(product);
             totalPriceOfProducts += product.getPrice();
+        }
+
+        List<Shop> allGymShops = shopBLL.findAllShops();
+        for (Shop currentShop : allGymShops) {
+            if (currentShop.getId_shop() == listOfBoughtProducts.get(0).getId_shop_fk() && currentShop.getDiscount_mode() == 1) {
+                totalPriceOfProducts -= 0.1 * totalPriceOfProducts;
+                break;
+            }
         }
 
         if (user.getMoney_card() < totalPriceOfProducts) {
