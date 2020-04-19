@@ -28,7 +28,7 @@ public class UserRestController {
     public User findUserByIdRequest(@RequestBody int id){
         if (id > myUsersBLL.findBiggestUserId()) {
             System.out.println("There is no user with id " + id);
-            return new User(-1,"",-1,-1,"","", -1, -1);
+            return new User(-1,"",-1,-1,"","", -1, -1, -1);
         }
         return myUsersBLL.findById(id);
     }
@@ -42,14 +42,14 @@ public class UserRestController {
     public String performUserPostRequests(@RequestBody User user, HttpServletRequest request) {
         if(request.getServletPath().equals("/deleteUser")) {
             if (myUsersBLL.findById(user.getId_user()) != null) {
-                myUsersBLL.deleteClient(new User(user.getId_user(), user.getName(), user.getId_trainer_fkk(), user.getAge(), user.getCard_type(), user.getFree_saunas_info(), user.getId_sauna_fk(), user.getMoney_card()));
+                myUsersBLL.deleteClient(new User(user.getId_user(), user.getName(), user.getId_trainer_fkk(), user.getAge(), user.getCard_type(), user.getFree_saunas_info(), user.getId_sauna_fk(), user.getMoney_card(), user.getId_sportclass_fk()));
                 return "User deleted succesfully";
             } else {
                 return "User with id " + user.getId_user() + " was not found!";
             }
         } else if (request.getServletPath().equals("/updateUser")) {
             if (myUsersBLL.findById(user.getId_user()) != null) {
-                myUsersBLL.updateClient(new User(user.getId_user(), user.getName(), user.getId_trainer_fkk(), user.getAge(), user.getCard_type(), user.getFree_saunas_info(), user.getId_sauna_fk(), user.getMoney_card()), user.getId_user());
+                myUsersBLL.updateClient(new User(user.getId_user(), user.getName(), user.getId_trainer_fkk(), user.getAge(), user.getCard_type(), user.getFree_saunas_info(), user.getId_sauna_fk(), user.getMoney_card(), user.getId_sportclass_fk()), user.getId_user());
                 return "User updated succesfully";
             } else {
                 return "User with id " + user.getId_user() + " was not found!";
@@ -59,7 +59,7 @@ public class UserRestController {
             if (user.getId_user() - 1 != currentBiggestId) {
                 return "The {id_user} fields has to be consecutive(last id is " + currentBiggestId + ").";
             }
-            myUsersBLL.insertClient(new User(user.getId_user(), user.getName(), user.getId_trainer_fkk(), user.getAge(), user.getCard_type(), user.getFree_saunas_info(), user.getId_sauna_fk(), user.getMoney_card()));
+            myUsersBLL.insertClient(new User(user.getId_user(), user.getName(), user.getId_trainer_fkk(), user.getAge(), user.getCard_type(), user.getFree_saunas_info(), user.getId_sauna_fk(), user.getMoney_card(), user.getId_sportclass_fk()));
             return "User inserted successfully!";
         }
         return "Request " + request.getServletPath() + " does not exist!";

@@ -5,12 +5,14 @@ public class SportClass {
     private String name;
     private int id_trainer_fk;
     private int month_price;
+    private int size_number;
 
-    public SportClass(int id_class, String name, int id_trainer_fk, int month_price) {
+    public SportClass(int id_class, String name, int id_trainer_fk, int month_price, int size_number) {
         this.id_class = id_class;
         this.name = name;
         this.id_trainer_fk = id_trainer_fk;
         this.month_price = month_price;
+        this.size_number = size_number;
     }
 
     public SportClass() {
@@ -47,5 +49,13 @@ public class SportClass {
 
     public void setMonth_price(int month_price) {
         this.month_price = month_price;
+    }
+
+    public int getSize_number() {
+        return size_number;
+    }
+
+    public void setSize_number(int size_number) {
+        this.size_number = size_number;
     }
 }

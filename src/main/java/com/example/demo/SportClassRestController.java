@@ -29,7 +29,7 @@ public class SportClassRestController {
     public SportClass findSportClassByIdRequests(@RequestBody int id){
         if (id > mySportClassBLL.findBiggestSportClassId()) {
             System.out.println("There is no sport class with id " + id);
-            return new SportClass(-1, "", -1, -1);
+            return new SportClass(-1, "", -1, -1, -1);
         }
         return mySportClassBLL.findById(id);
     }
@@ -43,14 +43,14 @@ public class SportClassRestController {
     public String performSportClassPostRequest(@RequestBody SportClass sportClass, HttpServletRequest request) {
         if(request.getServletPath().equals("/deleteSportClass")) {
             if (mySportClassBLL.findById(sportClass.getId_class()) != null) {
-                mySportClassBLL.deleteSportClass(new SportClass(sportClass.getId_class(), sportClass.getName(), sportClass.getId_trainer_fk(), sportClass.getMonth_price()));
+                mySportClassBLL.deleteSportClass(new SportClass(sportClass.getId_class(), sportClass.getName(), sportClass.getId_trainer_fk(), sportClass.getMonth_price(), sportClass.getSize_number()));
                 return "Sport class deleted succesfully";
             } else {
                 return "Sport class with id " + sportClass.getId_class() + " was not found!";
             }
         } else if (request.getServletPath().equals("/updateSportClass")) {
             if (mySportClassBLL.findById(sportClass.getId_class()) != null) {
-                mySportClassBLL.updateSportClass(new SportClass(sportClass.getId_class(), sportClass.getName(), sportClass.getId_trainer_fk(), sportClass.getMonth_price()), sportClass.getId_class());
+                mySportClassBLL.updateSportClass(new SportClass(sportClass.getId_class(), sportClass.getName(), sportClass.getId_trainer_fk(), sportClass.getMonth_price(), sportClass.getSize_number()), sportClass.getId_class());
                 return "Sport class updated succesfully";
             } else {
                 return "Sport class with id " + sportClass.getId_class() + " was not found!";
@@ -60,7 +60,7 @@ public class SportClassRestController {
             if (sportClass.getId_class() - 1 != currentBiggestId) {
                 return "The {id_class} fields has to be consecutive(last id is " + currentBiggestId + ").";
             }
-            mySportClassBLL.insertSportClass(new SportClass(sportClass.getId_class(), sportClass.getName(), sportClass.getId_trainer_fk(), sportClass.getMonth_price()));
+            mySportClassBLL.insertSportClass(new SportClass(sportClass.getId_class(), sportClass.getName(), sportClass.getId_trainer_fk(), sportClass.getMonth_price(), sportClass.getSize_number()));
             return "Sport class inserted successfuly!";
         }
         return "Request " + request.getServletPath() + " does not exist!";
