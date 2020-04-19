@@ -30,7 +30,7 @@ public class TestSportClass {
 
     @Test
     public void testFindSportClassById() {
-        when(sportClassDAO.findById(1)).thenReturn(new SportClass(1, "Kango jump", 1, 300));
+        when(sportClassDAO.findById(1)).thenReturn(new SportClass(1, "Kango jump", 1, 300, 0));
         assertEquals("Kango jump", sportClassBLL.findById(1).getName());
         verify(sportClassDAO).findById(1);
     }

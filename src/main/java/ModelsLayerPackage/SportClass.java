@@ -58,4 +58,8 @@ public class SportClass {
     public void setSize_number(int size_number) {
         this.size_number = size_number;
     }
+
+    public void incrementSizeNumber() {
+        size_number += 1;
+    }
 }

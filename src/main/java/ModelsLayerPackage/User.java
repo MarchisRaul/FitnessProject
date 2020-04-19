@@ -11,9 +11,8 @@ public class User {
     private String free_saunas_info;
     private int id_sauna_fk;
     private int money_card;
-    private int id_sportclass_fk;
 
-    public User(int id_user, String name, int id_trainer_fkk, int age, String card_type, String free_saunas_info, int id_sauna_fk, int money_card, int id_sportclass_fk) {
+    public User(int id_user, String name, int id_trainer_fkk, int age, String card_type, String free_saunas_info, int id_sauna_fk, int money_card) {
         this.id_user = id_user;
         this.name = name;
         this.id_trainer_fkk = id_trainer_fkk;
@@ -22,7 +21,6 @@ public class User {
         this.free_saunas_info = free_saunas_info;
         this.id_sauna_fk = id_sauna_fk;
         this.money_card = money_card;
-        this.id_sportclass_fk = id_sportclass_fk;
     }
 
     public User() {
@@ -93,11 +91,4 @@ public class User {
         this.money_card = money_card;
     }
 
-    public int getId_sportclass_fk() {
-        return id_sportclass_fk;
-    }
-
-    public void setId_sportclass_fk(int id_sportclass_fk) {
-        this.id_sportclass_fk = id_sportclass_fk;
-    }
 }
