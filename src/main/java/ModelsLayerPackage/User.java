@@ -1,6 +1,7 @@
 package ModelsLayerPackage;
 
 import BusinessLogicLayerPackage.ObserverChannel;
+import ModelsLayerPackage.GymCardPackage.DiscountForSubscriptionStrategy;
 
 public class User {
     private int id_user;

@@ -3,6 +3,8 @@ package com.example.demo;
 import BusinessLogicLayerPackage.*;
 import DAOlayerPackage.*;
 import ModelsLayerPackage.*;
+import ModelsLayerPackage.GymCardPackage.DiscountForSubscriptionStrategy;
+import ModelsLayerPackage.GymCardPackage.SubscriptionManagerFactory;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -118,11 +120,15 @@ public class UserAndProductRestController {
             }
         }
 
-        if (user.getMoney_card() < totalPriceOfProducts) {
+        SubscriptionManagerFactory subscriptionManagerFactory = new SubscriptionManagerFactory();
+        DiscountForSubscriptionStrategy subscriptionStrategy = subscriptionManagerFactory.getSubscriptionManager(user.getCard_type());
+        int finalPriceOfProducts = subscriptionStrategy.computeFinalPrice(totalPriceOfProducts);
+
+        if (user.getMoney_card() < finalPriceOfProducts) {
             return "Sorry dear " + user.getName() + " but you don't have enough money to buy all the products you selected!";
         }
 
-        user.setMoney_card(user.getMoney_card() - totalPriceOfProducts);
+        user.setMoney_card(user.getMoney_card() - finalPriceOfProducts);
         myUserBLL.updateClient(user, user.getId_user());
 
         for (Product product : listOfBoughtProducts) {
