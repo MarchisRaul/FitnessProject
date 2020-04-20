@@ -68,4 +68,4 @@ Design pattern-ul strategy este folosit pentru a calcula prețul final al unei c
 Interfața DiscountForSubscriptionStrategy având metoda computeFinalPrice, este implementată de către NormaluserSubscriptionManager și de către PowerUserSubscriptionManager, însă având implementare diferită în cele două clase.
 Clasa SubscriptionManagerFactory, prin metoda getSubscriptionManager care primește ca și parametru un String ce reprezintă tipul de abonament al user-ului, va returna un obiect de tipul interfeței dar care este instanțiat în funcție de clasa care se dorește să calculeze prețul final.
 
-![Strategy image](Strategy.jpeg)
+![Strategy image](Strategy.jpg)
