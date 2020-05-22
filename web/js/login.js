@@ -1,30 +1,28 @@
 
 $(document).ready(function()    {
 	
-	var $id_user = $('#id');
-	var $password = $('#password');
+	var $id_user = $('#id_user');
+	var $passwordd = $('#password');
 	var $response_info = $('#response_info');
 	
+	var email = {
+		emailOfUser: $id_user.val(),
+	};
+	var passwordd = {
+		passwordd: $passwordd.val(),
+	};
+	
     $("#login").click(function(e)    {
-		
-		var email = {
-			emailOfUser: $id_user.val(),
-		};
-		var passwordd = {
-			passwordd: $password.val(),
-		};
-		
-		
         $.ajax({
             type: 'GET',
             url:'http://localhost:8080/verifyLogin',
-			data: JSON.stringify({emailOfUser:email, passwordd:password}),
-			dataType: 'json',
+			data: {emailOfUser: $id_user.val(), passwordd: $passwordd.val()},
+			dataType: 'text',
             success: function(data){
 				$response_info.append('<li>Result: ' + data + '</li>');
 				if (data === "You successfully logged in. Have a great training at our gym!") {
 					console.log("DADA");
-					window.location.href = "C:\Users\Maerchis\Desktop\demo (1)\demo\web\nebuneala.html";
+					window.location.href = "selectAction.html";
 				}
 			},
             error: function(){
