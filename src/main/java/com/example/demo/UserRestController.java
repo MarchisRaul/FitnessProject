@@ -16,6 +16,7 @@ public class UserRestController {
     UserBLL myUsersBLL = new UserBLL(userDAO);
 
     ////////////////// USER //////////////////
+    @CrossOrigin(origins="*")
     @GetMapping("/getUsers")
     public List<User> getUsers() {
         List<User> myUsers = new ArrayList<User>();
@@ -24,8 +25,9 @@ public class UserRestController {
         return myUsers;
     }
 
+    @CrossOrigin(origins="*")
     @GetMapping("/findUserById")
-    public User findUserByIdRequest(@RequestBody int id){
+    public User findUserByIdRequest(@RequestParam(value="id") int id){
         if (id > myUsersBLL.findBiggestUserId()) {
             System.out.println("There is no user with id " + id);
             return new User(-1,"",-1,-1,"","", -1, -1);
@@ -38,6 +40,7 @@ public class UserRestController {
         return myUsersBLL.findByName(name);
     }
 
+    @CrossOrigin(origins="*")
     @RequestMapping(value={"/deleteUser", "/updateUser", "/insertUser"}, method = RequestMethod.POST)
     public String performUserPostRequests(@RequestBody User user, HttpServletRequest request) {
         if(request.getServletPath().equals("/deleteUser")) {

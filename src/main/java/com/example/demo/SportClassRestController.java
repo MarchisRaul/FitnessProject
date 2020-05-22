@@ -18,6 +18,7 @@ public class SportClassRestController {
     SportClassBLL mySportClassBLL = new SportClassBLL(sportClassDAO);
 
     ////////////////// SportClass //////////////////
+    @CrossOrigin(origins="*")
     @GetMapping("/getSportClasses")
     public List<SportClass> getSportClasses() {
         List<SportClass> mySportClasses =  mySportClassBLL.findAllSportClasses();

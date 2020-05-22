@@ -20,8 +20,9 @@ public class PasswordRestController {
     UserDAO userDAO = new UserDAO();
     UserBLL userBLL = new UserBLL(userDAO);
 
+    @CrossOrigin(origins="*")
     @GetMapping("/verifyLogin")
-    public String verifyLoginRequest(@RequestParam(value="emailOfUser") String emailOfUser, @RequestParam(value="password") String password, HttpServletRequest request) {
+    public String verifyLoginRequest(@RequestParam(value="emailOfUser") String emailOfUser, @RequestParam(value="passwordd") String password, HttpServletRequest request) {
         User user = userBLL.findByName(emailOfUser);
         if (user == null) {
             return "Email does not exist, please try again!";

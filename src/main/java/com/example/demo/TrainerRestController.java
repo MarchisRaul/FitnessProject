@@ -16,6 +16,7 @@ public class TrainerRestController {
     TrainerBLL myTrainerBLL = new TrainerBLL(trainerDAO);
 
     ////////////////// Trainer //////////////////
+    @CrossOrigin(origins="*")
     @GetMapping("/getTrainers")
     public List<Trainer> getTrainers() {
         List<Trainer> myTrainers = myTrainerBLL.findAllTrainers();

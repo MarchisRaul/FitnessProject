@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gym club</title>
+		<title>Gym club</title>
+		<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+		<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+		<!-- font-awesome icons -->
+		<link href="css/font-awesome.min.css" rel="stylesheet">
+	</head>
+	
+	<body>
+		<h1>Gym club</h1>
+		
+		<h2>Clients</h2>
+		<ul id="my_clients"></ul>
+		
+		<h5>Get all clients</h5>
+		<button id="request_all_users_get">Find all users!</button>
+		
+		<h4>Search user</h4>
+		<p>id: <input type="text" id="id"></p>
+		<button id="request_get_user_by_id">Find user by id!</button>
+		
+		<h5>Insert / update / delete user
+		<p>id_user: <input type="text" id="id_user"></p>
+		<p>name: <input type="text" id="name"></p>
+		<p>id_trainer_fkk: <input type="text" id="id_trainer_fkk"></p>
+		<p>age: <input type="text" id="age"></p>
+		<p>card_type: <input type="text" id="card_type"></p>
+		<p>free_saunas_info: <input type="text" id="free_saunas_info"></p>
+		<p>id_sauna_fk: <input type="text" id="id_sauna_fk"></p>
+		<p>money_card: <input type="text" id="money_card"></p>
+		<button id="request_insert_client">Insert client!</button>
+		<button id="request_delete_client">Delete client!</button>
+		<h6>Wanna go back?</h6>
+		<button onclick="goBack()">Go Back</button>
+		
+		<script src="C:\Users\Maerchis\Desktop\demo (1)\demo\web\js\jquery-3.5.1.min.js"></script>
+		<script src="C:\Users\Maerchis\Desktop\demo (1)\demo\web\js\nebuneala.js"></script>
+		<script>
+			function goBack() {
+				window.history.back();
+			}
+		</script>
+	</body>
+</html>

@@ -18,6 +18,7 @@ public class ShopRestController {
     ShopBLL myShopBLL = new ShopBLL(shopDAO);
 
     ////////////////// Shop //////////////////
+    @CrossOrigin(origins="*")
     @GetMapping("/getShops")
     public List<Shop> getShops() {
         List<Shop> myShops = myShopBLL.findAllShops();
