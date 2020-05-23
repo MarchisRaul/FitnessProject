@@ -27,8 +27,9 @@ public class UserAndProductRestController {
     ShopDAO shopDAO = new ShopDAO();
     ShopBLL shopBLL = new ShopBLL(shopDAO);
 
+    @CrossOrigin(origins="*")
     @GetMapping("/getProductsForUser")
-    public String getProductsForUserRequest(@RequestBody String nameOfUser) {
+    public String getProductsForUserRequest(@RequestParam(value="nameOfUser") String nameOfUser) {
         User user = myUserBLL.findByName(nameOfUser);
 
         if (user == null) {
@@ -60,8 +61,9 @@ public class UserAndProductRestController {
         return stringToBeReturned;
     }
 
+    @CrossOrigin(origins="*")
     @GetMapping("/getUsersForProduct")
-    public String getUsersForProductRequest(@RequestBody String nameOfProduct) {
+    public String getUsersForProductRequest(@RequestParam(value="nameOfProduct") String nameOfProduct) {
         Product product = myProductBLL.findByName(nameOfProduct);
 
         if (product == null) {
@@ -88,8 +90,9 @@ public class UserAndProductRestController {
         return stringToBeReturned;
     }
 
+    @CrossOrigin(origins="*")
     @RequestMapping(value={"/buyProductsForUser"}, method = RequestMethod.POST)
-    public String buyProductForUser(@RequestParam(value="nameOfUser") String nameOfUser, @RequestParam(value="nameOfProducts") List<String> nameOfProducts, HttpServletRequest request) {
+    public String buyProductForUser(@RequestParam(value="nameOfUserBuy") String nameOfUser, @RequestParam(value="nameOfProducts") List<String> nameOfProducts) {
 
         User user = myUserBLL.findByName(nameOfUser);
         if (user == null) {
@@ -99,7 +102,15 @@ public class UserAndProductRestController {
         int totalPriceOfProducts = 0;
         List<Product> listOfBoughtProducts = new ArrayList<Product>();
         for (String nameOfProduct : nameOfProducts) {
-            Product product = myProductBLL.findByName(nameOfProduct);
+            String[] nameOfProductModified = nameOfProduct.split("[\\W]");
+            String finalProductName = "";
+            for (String currentModifiedString: nameOfProductModified) {
+                if (!currentModifiedString.equals("")) {
+                    finalProductName = currentModifiedString;
+                    break;
+                }
+            }
+            Product product = myProductBLL.findByName(finalProductName);
             if (product == null) {
                 return "Sorry dear " + user.getName() + " but the product " + nameOfProduct + " was not found in the database!";
             }
@@ -107,7 +118,6 @@ public class UserAndProductRestController {
                 return "Sorry dear " + user.getName() + " but the product " + nameOfProduct + " is out of stock for the moment!";
             }
 
-            product.setQuantity(product.getQuantity() - 1);
             listOfBoughtProducts.add(product);
             totalPriceOfProducts += product.getPrice();
         }
@@ -132,8 +142,10 @@ public class UserAndProductRestController {
         myUserBLL.updateClient(user, user.getId_user());
 
         for (Product product : listOfBoughtProducts) {
-            myProductBLL.updateProduct(product, product.getId_product());
-            userProductBLL.insertPair(new UserProduct(user.getId_user(), product.getId_product()));
+            Product newProduct = myProductBLL.findById(product.getId_product());
+            newProduct.setQuantity(newProduct.getQuantity() - 1);
+            myProductBLL.updateProduct(newProduct, newProduct.getId_product());
+            userProductBLL.insertPair(new UserProduct(user.getId_user(), newProduct.getId_product()));
         }
 
         return "We hope you enjoyed buying from our online shopping! The products are going to arrive to you soon.";

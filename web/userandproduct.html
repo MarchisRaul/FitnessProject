@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gym club</title>
+		<title>Gym club</title>
+		<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+		<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+		<!-- font-awesome icons -->
+		<link href="css/font-awesome.min.css" rel="stylesheet">
+	</head>
+	
+	<body>
+		<h1>Gym club</h1>
+		
+		<h2>User and products</h2>
+		<ul id="my_products"></ul>
+		
+		<h4>Search products bought by an user name</h4>
+		<p>username: <input type="text" id="nameOfUser"></p>
+		<button id="request_get_products_for_user">Find products for user!</button>
+		
+		<h4>Search users that bought a product from the gym shops</h4>
+		<p>product-name: <input type="text" id="nameOfProduct"></p>
+		<button id="request_get_users_for_products">Find products for user!</button>
+		
+		<h4>Buy some products from our shops</h4>
+		<h6>Please introduce your desired products with a space character between them in the 'username' field.</h6>
+		<p>username: <input type="text" id="nameOfUserBuy"></p>
+		<p>products: <input type="text" id="nameOfProducts"></p>
+		<button id="request_post_buy_products">Purchase the products!</button>
+		
+		<h6>Wanna go back?</h6>
+		<button onclick="goBack()">Go Back</button>
+		
+		<script src="C:\Users\Maerchis\Desktop\demo (1)\demo\web\js\jquery-3.5.1.min.js"></script>
+		<script src="C:\Users\Maerchis\Desktop\demo (1)\demo\web\js\userandproduct.js"></script>
+		<script>
+			function goBack() {
+				window.history.back();
+			}
+		</script>
+	</body>
+</html>

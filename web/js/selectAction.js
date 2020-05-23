@@ -62,4 +62,22 @@ $(document).ready(function()    {
 
 });
 
+$(document).ready(function()    {
+	
+    $("#select_action_users_for_trainer").click(function(e)    {
+        window.location.href = "userandtrainer.html";
+    });
+
+
+});
+
+$(document).ready(function()    {
+	
+    $("#select_action_products_for_user").click(function(e)    {
+        window.location.href = "userandproduct.html";
+    });
+
+
+});
+
 

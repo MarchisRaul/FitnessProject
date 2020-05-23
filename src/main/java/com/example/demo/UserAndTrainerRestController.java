@@ -19,19 +19,20 @@ public class UserAndTrainerRestController {
     TrainerDAO trainerDAO = new TrainerDAO();
     TrainerBLL myTrainerBLL = new TrainerBLL(trainerDAO);
 
+    @CrossOrigin(origins="*")
     @GetMapping("/getUsersForTrainer")
-    public String getUsersForProductRequest(@RequestBody String nameOfTrainer) {
+    public String getUsersForProductRequest(@RequestParam(value="nameOfTrainer") String nameOfTrainer) {
         Trainer trainer = myTrainerBLL.findByName(nameOfTrainer);
         if (trainer == null) {
             return "Something went wrong because the trainer name was not found in the database!";
         }
 
-        String returnedString = "Trainer " + nameOfTrainer + " works with the following clients: \n";
+        String returnedString = "Trainer " + nameOfTrainer + " works with the following clients: ";
         List<User> listOfUsers = myUserBLL.findAllClients();
         boolean trainerHasClients = false;
         for (User user : listOfUsers) {
             if (user.getId_trainer_fkk() == trainer.getId_trainer_pk()) {
-                returnedString += user.getName() + "\n";
+                returnedString += user.getName() + " ";
                 trainerHasClients = true;
             }
         }
