@@ -53,4 +53,13 @@ $(document).ready(function()    {
 
 });
 
+$(document).ready(function()    {
+	
+    $("#select_action_products_from_shop").click(function(e)    {
+        window.location.href = "productandshop.html";
+    });
+
+
+});
+
 

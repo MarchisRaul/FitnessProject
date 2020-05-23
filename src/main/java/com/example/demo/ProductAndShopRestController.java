@@ -20,8 +20,9 @@ public class ProductAndShopRestController {
     ShopDAO shopDAO = new ShopDAO();
     ShopBLL myShopBLL = new ShopBLL(shopDAO);
 
+    @CrossOrigin(origins="*")
     @GetMapping("/findProductsFromShop")
-    public List<Product> findAllProductsFromShopId(@RequestBody int shopId) {
+    public List<Product> findAllProductsFromShopId(@RequestParam(value="id") int shopId) {
         List<Product> allProducts = myProductBLL.findAllProducts();
         List<Product> productsFromShop = new ArrayList<Product>();
 
