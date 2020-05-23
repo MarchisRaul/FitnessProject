@@ -26,8 +26,9 @@ public class ShopRestController {
         return myShops;
     }
 
+    @CrossOrigin(origins="*")
     @GetMapping("/findShopById")
-    public Shop findShopByIdRequest(@RequestBody int id){
+    public Shop findShopByIdRequest(@RequestParam(value="id") int id){
         if (id > myShopBLL.findBiggestShopId()) {
             System.out.println("There is no user with id " + id);
             return new Shop(-1, -1);
@@ -35,6 +36,7 @@ public class ShopRestController {
         return myShopBLL.findById(id);
     }
 
+    @CrossOrigin(origins="*")
     @RequestMapping(value={"/deleteShop", "/updateShop", "/insertShop"}, method = RequestMethod.POST)
     public String performShopPostRequests(@RequestBody Shop shop, HttpServletRequest request) {
         if(request.getServletPath().equals("/deleteShop")) {

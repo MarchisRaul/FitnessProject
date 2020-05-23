@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gym club</title>
+		<title>Gym club</title>
+		<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+		<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+		<!-- font-awesome icons -->
+		<link href="css/font-awesome.min.css" rel="stylesheet">
+	</head>
+	
+	<body>
+		<h1>Gym club</h1>
+		
+		<h2>Saunas</h2>
+		<ul id="my_saunas"></ul>
+		
+		<h5>Get all saunas</h5>
+		<button id="request_all_saunas_get">Find all saunas!</button>
+		
+		<h4>Search sauna by id</h4>
+		<p>id: <input type="text" id="id"></p>
+		<button id="request_get_sauna_by_id">Find sauna by id!</button>
+		
+		<h5>Insert / update / delete sauna</h5>
+		<p>id_sauna: <input type="text" id="id_sauna"></p>
+		<p>occupied: <input type="text" id="occupied"></p>
+		<p>session_time: <input type="text" id="session_time"></p>
+		<p>size_number: <input type="text" id="size_number"></p>
+		
+		<button id="request_insert_sauna">Insert sauna!</button>
+		<button id="request_update_sauna">Update sauna!</button>
+		<button id="request_delete_sauna">Delete sauna!</button>
+		<h6>Wanna go back?</h6>
+		<button onclick="goBack()">Go Back</button>
+		
+		<script src="C:\Users\Maerchis\Desktop\demo (1)\demo\web\js\jquery-3.5.1.min.js"></script>
+		<script src="C:\Users\Maerchis\Desktop\demo (1)\demo\web\js\sauna.js"></script>
+		<script>
+			function goBack() {
+				window.history.back();
+			}
+		</script>
+	</body>
+</html>

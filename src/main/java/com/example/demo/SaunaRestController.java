@@ -22,6 +22,7 @@ public class SaunaRestController {
     SaunaBLL mySaunaBLL = new SaunaBLL(saunaDAO);
 
     ////////////////// Sauna //////////////////
+    @CrossOrigin(origins="*")
     @GetMapping("/getSaunas")
     public List<Sauna> getSaunas() {
         List<Sauna> mySaunas = mySaunaBLL.findAllSaunas();
@@ -29,8 +30,9 @@ public class SaunaRestController {
         return mySaunas;
     }
 
+    @CrossOrigin(origins="*")
     @GetMapping("/findSaunaById")
-    public Sauna findSaunaByIdRequest(@RequestBody int id) throws ParseException {
+    public Sauna findSaunaByIdRequest(@RequestParam(value="id") int id) throws ParseException {
         if (id > mySaunaBLL.findBiggestSaunaId()) {
             System.out.println("There is no sauna with id " + id);
             return new Sauna(-1, -1, new java.sql.Time(1, 45, 0), -1);
@@ -38,6 +40,7 @@ public class SaunaRestController {
         return mySaunaBLL.findById(id);
     }
 
+    @CrossOrigin(origins="*")
     @RequestMapping(value={"/deleteSauna", "/updateSauna", "/insertSauna"}, method = RequestMethod.POST)
     public String performSaunaPostRequests(@RequestBody Sauna sauna, HttpServletRequest request) {
         if(request.getServletPath().equals("/deleteSauna")) {

@@ -28,8 +28,26 @@ $(document).ready(function()    {
 
 $(document).ready(function()    {
 	
+    $("#select_action_shop").click(function(e)    {
+        window.location.href = "shop.html";
+    });
+
+
+});
+
+$(document).ready(function()    {
+	
     $("#select_action_product").click(function(e)    {
         window.location.href = "product.html";
+    });
+
+
+});
+
+$(document).ready(function()    {
+	
+    $("#select_action_sauna").click(function(e)    {
+        window.location.href = "sauna.html";
     });
 
 

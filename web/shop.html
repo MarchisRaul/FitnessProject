@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gym club</title>
+		<title>Gym club</title>
+		<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+		<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+		<!-- font-awesome icons -->
+		<link href="css/font-awesome.min.css" rel="stylesheet">
+	</head>
+	
+	<body>
+		<h1>Gym club</h1>
+		
+		<h2>Shops</h2>
+		<ul id="my_shops"></ul>
+		
+		<h5>Get all shops</h5>
+		<button id="request_all_shops_get">Find all shops!</button>
+		
+		<h4>Search shop by id</h4>
+		<p>id: <input type="text" id="id"></p>
+		<button id="request_get_shop_by_id">Find shop by id!</button>
+		
+		<h5>Insert / update / delete shop</h5>
+		<p>id_shop: <input type="text" id="id_shop"></p>
+		<p>discount_mode: <input type="text" id="discount_mode"></p>
+		
+		<button id="request_insert_shop">Insert shop!</button>
+		<button id="request_update_shop">Update shop!</button>
+		<button id="request_delete_shop">Delete shop!</button>
+		<h6>Wanna go back?</h6>
+		<button onclick="goBack()">Go Back</button>
+		
+		<script src="C:\Users\Maerchis\Desktop\demo (1)\demo\web\js\jquery-3.5.1.min.js"></script>
+		<script src="C:\Users\Maerchis\Desktop\demo (1)\demo\web\js\shop.js"></script>
+		<script>
+			function goBack() {
+				window.history.back();
+			}
+		</script>
+	</body>
+</html>
