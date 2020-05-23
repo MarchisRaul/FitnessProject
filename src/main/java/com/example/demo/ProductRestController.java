@@ -18,6 +18,7 @@ public class ProductRestController {
     ProductBLL myProductBLL = new ProductBLL(productDAO);
 
     ////////////////// Product //////////////////
+    @CrossOrigin(origins="*")
     @GetMapping("/getProducts")
     public List<Product> getProducts() {
         List<Product> myProducts = myProductBLL.findAllProducts();
@@ -25,8 +26,9 @@ public class ProductRestController {
         return myProducts;
     }
 
+    @CrossOrigin(origins="*")
     @GetMapping("/findProductById")
-    public Product findProductByIdRequest(@RequestBody int id){
+    public Product findProductByIdRequest(@RequestParam(value="id") int id){
         if (id > myProductBLL.findBiggestProductId()) {
             System.out.println("There is no product with id " + id);
             return new Product(-1, "", -1, "", -1, -1);
@@ -34,11 +36,13 @@ public class ProductRestController {
         return myProductBLL.findById(id);
     }
 
+    @CrossOrigin(origins="*")
     @GetMapping("/findProductByName")
-    public Product findProductByNameRequest(@RequestBody String name) {
+    public Product findProductByNameRequest(@RequestParam(value="name") String name) {
         return myProductBLL.findByName(name);
     }
 
+    @CrossOrigin(origins="*")
     @RequestMapping(value={"/deleteProduct", "/updateProduct", "/insertProduct"}, method = RequestMethod.POST)
     public String performProductPostRequests(@RequestBody Product product, HttpServletRequest request) {
         if(request.getServletPath().equals("/deleteProduct")) {

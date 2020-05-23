@@ -35,8 +35,9 @@ public class UserRestController {
         return myUsersBLL.findById(id);
     }
 
+    @CrossOrigin(origins="*")
     @GetMapping("/findUserByName")
-    public User findUserByNameRequest(@RequestBody String name){
+    public User findUserByNameRequest(@RequestParam(value="name") String name){
         return myUsersBLL.findByName(name);
     }
 

@@ -24,8 +24,9 @@ public class TrainerRestController {
         return myTrainers;
     }
 
+    @CrossOrigin(origins="*")
     @GetMapping("/findTrainerById")
-    public Trainer findTrainersByIdRequest(@RequestBody int id) {
+    public Trainer findTrainersByIdRequest(@RequestParam(value="id") int id) {
         if (id > myTrainerBLL.findBiggestTrainerId()) {
             System.out.println("There is no trainer with id " + id);
             return new Trainer(-1, "",-1,-1);
@@ -33,11 +34,13 @@ public class TrainerRestController {
         return myTrainerBLL.findById(id);
     }
 
+    @CrossOrigin(origins="*")
     @GetMapping("/findTrainerByName")
-    public Trainer findTrainersByNameRequest(@RequestBody String name) {
+    public Trainer findTrainersByNameRequest(@RequestParam(value="name") String name) {
         return myTrainerBLL.findByName(name);
     }
 
+    @CrossOrigin(origins="*")
     @RequestMapping(value={"/deleteTrainer", "/updateTrainer", "/insertTrainer"}, method = RequestMethod.POST)
     public String performTrainerPostRequests(@RequestBody Trainer trainer, HttpServletRequest request) {
         if(request.getServletPath().equals("/deleteTrainer")) {

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gym club</title>
+		<title>Gym club</title>
+		<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+		<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+		<!-- font-awesome icons -->
+		<link href="css/font-awesome.min.css" rel="stylesheet">
+	</head>
+	
+	<body>
+		<h1>Gym club</h1>
+		
+		<h2>Sport-Classes</h2>
+		<ul id="my_sportclasses"></ul>
+		
+		<h5>Get all sport-classes</h5>
+		<button id="request_all_sportclasses_get">Find all sport-classes!</button>
+		
+		<h4>Search sport-class by id</h4>
+		<p>id: <input type="text" id="id"></p>
+		<button id="request_get_sportclass_by_id">Find sport-class by id!</button>
+		
+		<h5>Search sport-class by name</h5>
+		<p>name: <input type="text" id="nameOfSportclass"></p>
+		<button id="request_get_sportclass_by_name">Find sport-class by name!</button>
+		
+		<h6>Insert / update / delete sport-class</h6>
+		<p>id_class: <input type="text" id="id_class"></p>
+		<p>name: <input type="text" id="name"></p>
+		<p>id_trainer_fk: <input type="text" id="id_trainer_fk"></p>
+		<p>month_price: <input type="text" id="month_price"></p>
+		<p>size_number: <input type="text" id="size_number"></p>
+		
+		<button id="request_insert_sportclass">Insert sport-class!</button>
+		<button id="request_update_sportclass">Update sport-class!</button>
+		<button id="request_delete_sportclass">Delete sport-class!</button>
+		<h7>Wanna go back?</h7>
+		<button onclick="goBack()">Go Back</button>
+		
+		<script src="C:\Users\Maerchis\Desktop\demo (1)\demo\web\js\jquery-3.5.1.min.js"></script>
+		<script src="C:\Users\Maerchis\Desktop\demo (1)\demo\web\js\sportclass.js"></script>
+		<script>
+			function goBack() {
+				window.history.back();
+			}
+		</script>
+	</body>
+</html>

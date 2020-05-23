@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gym club</title>
+		<title>Gym club</title>
+		<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+		<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+		<!-- font-awesome icons -->
+		<link href="css/font-awesome.min.css" rel="stylesheet">
+	</head>
+	
+	<body>
+		<h1>Gym club</h1>
+		
+		<h2>Products</h2>
+		<ul id="my_products"></ul>
+		
+		<h5>Get all products</h5>
+		<button id="request_all_products_get">Find all products!</button>
+		
+		<h4>Search product by id</h4>
+		<p>id: <input type="text" id="id"></p>
+		<button id="request_get_product_by_id">Find product by id!</button>
+		
+		<h5>Search product by name</h5>
+		<p>name: <input type="text" id="nameOfProduct"></p>
+		<button id="request_get_product_by_name">Find product by name!</button>
+		
+		<h6>Insert / update / delete product</h6>
+		<p>id_product: <input type="text" id="id_product"></p>
+		<p>name: <input type="text" id="name"></p>
+		<p>id_shop_fk: <input type="text" id="id_shop_fk"></p>
+		<p>utility: <input type="text" id="utility"></p>
+		<p>price: <input type="text" id="price"></p>
+		<p>quantity: <input type="text" id="quantity"></p>
+		
+		<button id="request_insert_product">Insert product!</button>
+		<button id="request_update_product">Update product!</button>
+		<button id="request_delete_product">Delete product!</button>
+		<h7>Wanna go back?</h7>
+		<button onclick="goBack()">Go Back</button>
+		
+		<script src="C:\Users\Maerchis\Desktop\demo (1)\demo\web\js\jquery-3.5.1.min.js"></script>
+		<script src="C:\Users\Maerchis\Desktop\demo (1)\demo\web\js\product.js"></script>
+		<script>
+			function goBack() {
+				window.history.back();
+			}
+		</script>
+	</body>
+</html>

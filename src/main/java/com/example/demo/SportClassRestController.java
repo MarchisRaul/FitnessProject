@@ -26,8 +26,9 @@ public class SportClassRestController {
         return mySportClasses;
     }
 
+    @CrossOrigin(origins="*")
     @GetMapping("/findSportClassById")
-    public SportClass findSportClassByIdRequests(@RequestBody int id){
+    public SportClass findSportClassByIdRequests(@RequestParam(value="id") int id){
         if (id > mySportClassBLL.findBiggestSportClassId()) {
             System.out.println("There is no sport class with id " + id);
             return new SportClass(-1, "", -1, -1, -1);
@@ -35,11 +36,13 @@ public class SportClassRestController {
         return mySportClassBLL.findById(id);
     }
 
+    @CrossOrigin(origins="*")
     @GetMapping("/findSportClassByName")
-    public SportClass findSportClassByNameRequests(@RequestBody String name){
+    public SportClass findSportClassByNameRequests(@RequestParam(value="name") String name){
         return mySportClassBLL.findByName(name);
     }
 
+    @CrossOrigin(origins="*")
     @RequestMapping(value={"/deleteSportClass", "/updateSportClass", "/insertSportClass"}, method = RequestMethod.POST)
     public String performSportClassPostRequest(@RequestBody SportClass sportClass, HttpServletRequest request) {
         if(request.getServletPath().equals("/deleteSportClass")) {
