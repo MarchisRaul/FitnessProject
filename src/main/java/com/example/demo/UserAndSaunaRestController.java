@@ -22,20 +22,11 @@ public class UserAndSaunaRestController {
     SaunaDAO saunaDAO = new SaunaDAO();
     SaunaBLL mySaunaBLL = new SaunaBLL(saunaDAO);
 
+    @CrossOrigin(origins="*")
     @RequestMapping(value={"/addUserToSauna"}, method = RequestMethod.POST)
-    public String performUserPostRequests(@RequestBody Map<String, Integer> json, HttpServletRequest request) throws ParseException {
+    public String performUserPostRequests(@RequestParam(value="nameOfUser") String nameOfUser, @RequestParam(value="saunaId") int saunaId, HttpServletRequest request) throws ParseException {
         if(request.getServletPath().equals("/addUserToSauna")) {
-            if (json.size() > 1) {
-                return "Json not sent correctly!";
-            }
-            String name = "";
-            Integer saunaId = 0;
-            for (Map.Entry<java.lang.String, java.lang.Integer> entry : json.entrySet()) {
-                name = entry.getKey();
-                saunaId = entry.getValue();
-            }
-
-            User user = myUsersBLL.findByName(name);
+            User user = myUsersBLL.findByName(nameOfUser);
             if (user == null) {
                return "Something went wrong because your name was not found in the database!";
             }

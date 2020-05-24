@@ -80,4 +80,13 @@ $(document).ready(function()    {
 
 });
 
+$(document).ready(function()    {
+	
+    $("#select_action_join_sauna_by_user").click(function(e)    {
+        window.location.href = "userandsauna.html";
+    });
+
+
+});
+
 
