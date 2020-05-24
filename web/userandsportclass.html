@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gym club</title>
+		<title>Gym club</title>
+		<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+		<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+		<!-- font-awesome icons -->
+		<link href="css/font-awesome.min.css" rel="stylesheet">
+	</head>
+	
+	<body>
+		<h1>Gym club</h1>
+		
+		<h2>Users and sportclasses</h2>
+		<ul id="response_info"></ul>
+		
+		<h5>Get all sportclasses that a user goes to!</h5>
+		<p>nameOfUser: <input type="text" id="nameOfUser"></p>
+		<button id="request_all_sportclasses_for_user_get">Find the sportclasses!</button>
+		
+		<h5>Get all users that work out at a specific sportclass!</h5>
+		<p>nameOfSportClass: <input type="text" id="nameOfSportClass"></p>
+		<button id="request_all_users_for_sportclass_get">Find the users!</button>
+		
+		<h5>Join one of our gym sportclasses!</h5>
+		<h6>Please introduce your desired sportclasses with a space character between them in the 'nameOfSportClasses' field.</h6>
+		<p>nameOfUser: <input type="text" id="nameOfUserSecond"></p>
+		<p>nameOfSportClasses: <input type="text" id="nameOfSportClasses"></p>
+		<button id="request_join_sportclass_by_user">Join sportclass!</button>
+		
+		<h6>Wanna go back?</h6>
+		<button onclick="goBack()">Go Back</button>
+		
+		<script src="C:\Users\Maerchis\Desktop\demo (1)\demo\web\js\jquery-3.5.1.min.js"></script>
+		<script src="C:\Users\Maerchis\Desktop\demo (1)\demo\web\js\userandsportclass.js"></script>
+		<script>
+			function goBack() {
+				window.history.back();
+			}
+		</script>
+	</body>
+</html>

@@ -22,8 +22,9 @@ public class UserAndSportClassRestController {
     UserSportclassDAO userSportClassDAO = new UserSportclassDAO();
     UserSportclassBLL userSportClassBLL = new UserSportclassBLL(userSportClassDAO);
 
+    @CrossOrigin(origins="*")
     @GetMapping("/getSportClassesForUser")
-    public String getSportClassesForUserRequest(@RequestBody String nameOfUser) {
+    public String getSportClassesForUserRequest(@RequestParam(value="nameOfUser") String nameOfUser) {
         User user = myUserBLL.findByName(nameOfUser);
 
         if (user == null) {
@@ -44,14 +45,15 @@ public class UserAndSportClassRestController {
 
         String stringToBeReturned = "User " + nameOfUser + " did join the following classes: \n";
         for (String currentClassString : sportClassesForUser) {
-            stringToBeReturned += currentClassString + "\n";
+            stringToBeReturned += currentClassString + ", ";
         }
 
         return stringToBeReturned;
     }
 
+    @CrossOrigin(origins="*")
     @GetMapping("/getUsersForSportClass")
-    public String getUsersForSportClassRequest(@RequestBody String nameOfSportClass) {
+    public String getUsersForSportClassRequest(@RequestParam(value="nameOfSportClass") String nameOfSportClass) {
         SportClass sportClass = sportClassBLL.findByName(nameOfSportClass);
         if (sportClass == null) {
             return "Sorry but the sport class " + nameOfSportClass + " does not exist at our gym!";
@@ -77,8 +79,9 @@ public class UserAndSportClassRestController {
         return stringToBeReturned;
     }
 
+    @CrossOrigin(origins="*")
     @RequestMapping(value={"/joinSportClassForUser"}, method = RequestMethod.POST)
-    public String joinSportClassForUserRequest(@RequestParam(value="nameOfUser") String nameOfUser, @RequestParam(value="nameOfSportClasses") List<String> nameOfSportClasses, HttpServletRequest request) {
+    public String joinSportClassForUserRequest(@RequestParam(value="nameOfUserSecond") String nameOfUser, @RequestParam(value="nameOfSportClasses") List<String> nameOfSportClasses, HttpServletRequest request) {
         User user = myUserBLL.findByName(nameOfUser);
         if (user == null) {
             return "Something went wrong because your name was not found in the database!";
@@ -94,10 +97,19 @@ public class UserAndSportClassRestController {
 
         List<SportClass> sportClassesNeededByUser = new ArrayList<SportClass>();
         int totalPrice = 0;
-        for (String currentSportClassName : nameOfSportClasses) {
-            SportClass sportClass = sportClassBLL.findByName(currentSportClassName);
+        for (String nameOfSportClass : nameOfSportClasses) {
+            String[] nameOfSportClassModified = nameOfSportClass.split("[\\W]");
+            String finalSportClassName = "";
+            for (String currentModifiedString: nameOfSportClassModified) {
+                if (!currentModifiedString.equals("")) {
+                    finalSportClassName = currentModifiedString;
+                    break;
+                }
+            }
+
+            SportClass sportClass = sportClassBLL.findByName(finalSportClassName);
             if (sportClass == null) {
-                return "Sorry dear " + nameOfUser + " but sport class " + currentSportClassName + " does not exist ar our gym!";
+                return "Sorry dear " + nameOfUser + " but sport class " + finalSportClassName + " does not exist ar our gym!";
             }
             if (sportClassesIds.contains(sportClass.getId_class())) {
                 return "Sorry dear " + nameOfUser + " but for the current month it seems like you've already joined class " + sportClass.getName();

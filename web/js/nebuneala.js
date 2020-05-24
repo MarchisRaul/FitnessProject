@@ -35,7 +35,7 @@ $(document).ready(function()    {
 		
 		var userId = {
 			id: parseInt($id.val(), 10),
-		};
+		};	
 		
         $.ajax({
             type: 'GET',
@@ -54,6 +54,8 @@ $(document).ready(function()    {
 
 
 });
+
+// console log; parametrii din cod
 
 $(document).ready(function()    {
 	

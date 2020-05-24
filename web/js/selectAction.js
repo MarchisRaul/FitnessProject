@@ -89,4 +89,13 @@ $(document).ready(function()    {
 
 });
 
+$(document).ready(function()    {
+	
+    $("#select_action_user_and_sportclass").click(function(e)    {
+        window.location.href = "userandsportclass.html";
+    });
+
+
+});
+
 
