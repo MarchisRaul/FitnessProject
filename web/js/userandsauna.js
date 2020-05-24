@@ -12,7 +12,7 @@ $(document).ready(function()    {
 			data: {nameOfUser: $nameOfUser.val(), saunaId: parseInt($saunaId.val(), 10)},
 			dataType: 'text',
             success: function(data){
-				$response_info.append('<li>Result: ' + data + '</li>');
+				$response_info.append('<li>' + data + '</li>');
 			},
             error: function(){
                 $("#id").html("error")

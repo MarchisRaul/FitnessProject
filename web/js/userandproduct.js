@@ -84,7 +84,7 @@ $(document).ready(function()    {
             type: 'POST',
             url:'http://localhost:8080/buyProductsForUser',
 			data: postData,
-			dataType: "json",
+			dataType: 'text',
             success: function(data){
 				$my_products.append('<li>' + data + '</li>');
 			},

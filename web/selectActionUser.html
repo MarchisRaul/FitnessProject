@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<style>
+h1 {text-align: center;}
+h2 {text-align: center;}
+h3 {text-align: center;}
+h4 {text-align: center;}
+h5 {text-align: center;}
+h6 {text-align: center;}
+p {text-align: center;}
+div {text-align: center;}
+input.button {text-align: center;}
+
+.container {
+  height: 300px;
+  position: relative;
+  border: 3px solid green;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+
+</style>
+</head>
+</html>
+
+<html>
+	<head>
+		<title>Login</title>
+		<title>Login</title>
+		<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+		<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+		<!-- font-awesome icons -->
+		<link href="css/font-awesome.min.css" rel="stylesheet">
+	</head>
+	
+	<body>
+		<h1>Please select your desired action!</h1>
+		
+		<h3>Clients options!</h3>
+		<div class="container">
+			<div class="vertical-center">
+		<button id="select_action_products_from_shop">Products and shop management</button>
+		<br>
+		<button id="select_action_users_for_trainer">Users and trainers management</button>
+		<br>
+		<button id="select_action_products_for_user">Users and products management</button>
+		<br>
+		<button id="select_action_join_sauna_by_user">Users and saunas management</button>
+		<br>
+		<button id="select_action_user_and_sportclass">Users and sportclasses management</button>
+		
+		<h4>Wanna go back?</h4>
+		<button onclick="goBack()">Go Back</button>
+			</div>
+		</div>
+		<script src="C:\Users\Maerchis\Desktop\demo (1)\demo\web\js\jquery-3.5.1.min.js"></script>
+		<script src="C:\Users\Maerchis\Desktop\demo (1)\demo\web\js\selectActionUser.js"></script>
+		<script>
+			function goBack() {
+				window.history.back();
+			}
+		</script>
+	</body>
+
+</html>

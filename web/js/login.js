@@ -22,7 +22,11 @@ $(document).ready(function()    {
 				$response_info.append('<li>Result: ' + data + '</li>');
 				if (data === "You successfully logged in. Have a great training at our gym!") {
 					console.log("DADA");
-					window.location.href = "selectAction.html";
+					if ($id_user.val() === "admin" && $passwordd.val() === "admin") {
+						window.location.href = "selectActionAdmin.html";
+					} else {
+						window.location.href = "selectActionUser.html";
+					}
 				}
 			},
             error: function(){
