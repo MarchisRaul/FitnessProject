@@ -99,6 +99,6 @@ Deși interfața grafică este una foarte simplă, elementele fiind în general 
 ### 1. Login
 ![AdminLogin flow](loginAdmin.png)
 ### 2. Select desired action
-![AdminAction flow](adminAction.png)
+![AdminAction flow](adminActions.png)
 ### 3. Insert new user into database
 ![InsertUser flow](insertUserAdmin.png)
