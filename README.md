@@ -49,7 +49,7 @@ Fiecare tabel din baza de date este prelucrat prin intermediul a trei clase: mod
 Implementarea operațiilor și accesul la baza de date se află într-o clasă abstractă numită AbstractDAO, folosind tipuri generice care în urma apelurilor, vor fi înlocuite cu tipul de obiect care a apelat metodele respective, clasa fiind moștenită de toate celelalte clase DAO.
 Testarea anumitor metode se face prin intermediul API-ului Mockito.
 ### Front-end
-Partea de front-end reprezintă interfața grafică prietenoasă prin care utilizatorul va putea beneficia de aplicație. Aceasta va fi realizată în Android.
+Partea de front-end reprezintă interfața grafică prietenoasă prin care utilizatorul va putea beneficia de aplicație. Aceasta va fi realizată pe web.
 
 # Diagrame UML
 ### Diagrama bazei de date
