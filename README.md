@@ -39,6 +39,7 @@ API (application programming interface) reprezintă un set de reguli și specifi
 - Postman (folosit pentru testarea părții de back-end)
 - Mockito
 - Android 
+- jQuery
 
 # Implementare
 Pentru ca acest proiect să fie realizabil, acesta va fi împărțit în două mari categorii:
