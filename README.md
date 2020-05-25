@@ -78,7 +78,7 @@ sportivă își dorește. Apelurile la baza de date și relațiile între clasel
 
 ![Sequence diagram](secventa.png)
 
-### Front-End
+# Front-End
 Pentru partea de front-end, am decis să fac o interfață grafică web, folosind JavaScript, HTML, CSS și JQuery.
 Pagina principală este login-ul, care îi este afișat utilizatorului sub formă de pop-up. Acesta trebuie să-și introducă numele de utilizator și parola, după care, în funcție de tipul contului (admin / user), acesta va fi redirecționat spre o pagină cu acțiunile specifice lui.
 Fiecare acțiune posibiliă este puțin explicată prin label-urile atașate deasupra textfield-urilor, cu scop explicativ.
@@ -88,4 +88,17 @@ Deși interfața grafică este una foarte simplă, elementele fiind în general 
 În continuare, voi prezenta un use-case prin care un user se loghează în aplicație și își cumpără produse din magazinul sălii și un use-case prin care un admin se va conecta și va insera o nouă clasă de sport în cadrul sălii.
 
 ## USE-CASE USER ACCOUNT
-# Login
+### 1. Login
+![UserLogin flow](login.png)
+### 2. Select desired action
+![SelectAction flow](selectActionUser.png)
+### 3. Buy products
+![Buy flow](buyProducts.png)
+
+## USE-CASE ADMIN ACCOUNT
+### 1. Login
+![AdminLogin flow](loginAdmin.png)
+### 2. Select desired action
+![AdminAction flow](adminAction.png)
+### 3. Insert new user into database
+![InsertUser flow](insertUserAdmin.png)
